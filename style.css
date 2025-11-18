@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+:root{
+    --text : #fff;
+    --gray : #F8F8F8;
+    --black : #000000;
+    --white: #FFF;
+
+    --primary : #D7BFA5;
+    --secondary :  #4B3621;
+
+    --font-main : 'Cormorant' , serif;
+    --font-body : 'Inter' , sans-serif;
+
+    /* Font sizes */
+  --fs-hero-title: 2.2rem;     /* Big heading in hero */
+  --fs-section-title: 1.6rem;  /* Section titles like "New Arrivals" */
+  --fs-product-title: 1rem;    /* Product name */
+  --fs-product-price: 0.95rem; /* Prices */
+  --fs-body: 0.95rem;          /* Normal text */
+  --fs-small: 0.8rem;          /* Copyright, labels, etc. */
+}
+body{
+    min-height: 100vh;
+    background: var(--primary);
+    font-family: var(--font-body);
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/* Promo Slider */
+
+.promo_slider{
+    width: 100%;
+    background-color: var(--white);
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    align-items: center;
+}
+.promo_slider h3{
+    font-size: var(--fs-body);
+}
