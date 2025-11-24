@@ -56,7 +56,13 @@ button{
     border: 1px solid white;
     color: var(--white);
 }
-
+.--beige-btn{
+    border: 0;
+    padding: 8px 15px;
+    border-radius: 15px;
+    background: var(--primary);
+    color: var(--black);
+}
 
 
     /* Promo Slider */
@@ -65,7 +71,7 @@ button{
 
 .promo-slider{
     width: 100%;
-    background-color: var(--secondary);
+    background-color: var(--white);
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -148,7 +154,7 @@ button{
 
 .headline__container{
     position: absolute;
-    bottom: 10%;
+    bottom: 30%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -271,6 +277,12 @@ button{
     gap: 10px;
 }
 .latest-products .latest__cards .latest__card p{
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--fs-product-title);
+}
+.product-title{
     white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -402,11 +414,68 @@ button{
 .new-innovation .new__text-container{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     align-items: start;
 }
 
 .new-innovation .new__text-container h1{
     font-size: var(--fs-section-title);
     font-weight: 400;
+}
+.new-innovation .new__text-container p{
+    line-height: 2rem;
+    max-width: 95%;
+    font-size: var(--fs-small);
+}
+
+
+/* shop by category */
+
+
+.shop-category{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    
+}
+.shop__container{
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+}
+.shop-category .shop__headline__container{
+    display: flex;
+    justify-content: center;
+}
+.shop-category .shop__headline{
+    font-size: var(--fs-section-title-main);
+    font-family: var(--font-main);
+}
+.shop-category .shop__prod__container{
+    min-width: 50%;
+}
+.shop-category .shop__prod__container .shop__title{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0px;
+}
+.shop-category .shop__prod__container .shop__img-box{
+    
+}
+.shop-category .shop__prod__container .shop__title p {
+    font-size: var(--fs-product-title);
+    position: relative;
+}
+.shop-category .shop__prod__container .shop__title i{
+    font-size: var(--fs-small);
+    padding-top: 6px;
+}
+.shop__slider{
+    display: flex;
+    justify-content: center;
+}
+.shop__slider span , i {
+    font-size: var(--fs-small);
 }
