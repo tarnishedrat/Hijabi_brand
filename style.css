@@ -13,7 +13,7 @@
     --cream : #f4efe9;
     /* --primary : #D7BFA5; */
     /* --primary : #c7a980; */
-    --primary : #fad4a5;
+    --primary : #0F0F0F;
     /* --secondary :  #4B3621; */
     /* --secondary : #3e2f23; */
     --secondary : #f4efe9;
@@ -29,6 +29,7 @@
   --fs-product-price: 0.95rem; /* Prices */
   --fs-body: 0.95rem;          /* Normal text */
   --fs-small: 0.8rem;          /* Copyright, labels, etc. */
+  --fixed-header-height: 116px;
 }
 body{
     min-height: 100vh;
@@ -36,7 +37,7 @@ body{
     font-family: var(--font-body);
     font-weight: 300;
     color: black;
-    padding-top: calc(var(--nav-height));
+    padding-top: calc(var(--fixed-header-height));
 }
 img {
     width: 100%;
@@ -60,8 +61,13 @@ button{
     border: 0;
     padding: 8px 15px;
     border-radius: 15px;
-    background: var(--primary);
-    color: var(--black);
+    background: var(--black);
+    color: var(--white);
+    
+}
+.brb{
+    font-size: var(--fs-small);
+    font-weight: 400;
 }
 
 
@@ -78,11 +84,11 @@ button{
     align-items: center;
 }
 .promo-slider p{
-    color: var(--black);
+    color: gray;
     font-size: var(--fs-body);
 }
 .promo-slider i{
-    color: var(--black);
+    color: gray;
 }
     /* navbar */
 
@@ -90,27 +96,30 @@ button{
 .nav{
     width: 100%;
     padding: 30px 10px;
-   /*  background-color: var(--primary);
-    background-color: transparent; 
-    backdrop-filter: blur(5px); 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15); */
+    background-color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
+   
+} 
+.fixed-header-wrapper {
     position: fixed;
-    z-index: 1;
-      --nav-height: auto;
-}   
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background-color: var(--white); 
+}  
 .nav .nav__logo-box{
-    height: 100%;
+    height: 70%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 .nav .nav__logo-box img{
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 .nav .nav__tools{
     display: flex;
@@ -130,31 +139,49 @@ button{
     position: relative;
     margin: 0;
     padding: 0;
-
+    height: calc(100vh - var(--fixed-header-height));
 }
 .slideshow__img-box{
     width: 100%;
+    height: 100%;
+    background-color: red;
 }
 .slideshow img{
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
     display: block;
 }
-.slideshow::after{
+/* .slideshow::after{
     content: '';
-    background: linear-gradient(to bottom , rgb(54, 52, 52) , rgb(19, 18, 18));
-    height: 50px;
+    
+    background: var(--cream);
+    height: 100px;
     backdrop-filter: blur(10px);
     position: absolute;
-    bottom: -30px;
+    bottom: -80px;
     width: 100%;
-}
+    color: var(--black);
+    font-size: var(--fs-section-title-main);
+    font-family: var(--font-main);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    
+} */
+
+
 
 /* Headline */
 
 
+
 .headline__container{
     position: absolute;
-    bottom: 30%;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -190,8 +217,8 @@ button{
 /* secondary headline */
 
 
-.secondary-line{
-    background-color: var(--primary);
+.secondary-line , .first-line{
+    background-color: var(--white);
     line-height: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -199,17 +226,20 @@ button{
     padding: 30px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
 }
-.secondary-line h1{
+.secondary-line h1 , .first-line h1{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
     text-align: center;
     color: var(--black);
 }
-.secondary-line p{
+.secondary-line p , .first-line p{
     font-size: var(--fs-small);
     font-family: var(--font-body);
     text-align: center;
     color: var(--black);
+}
+.first-line{
+    background: var(--cream);
 }
 
 
@@ -300,7 +330,7 @@ button{
 
 
 .forth-line{
-    background-color: var(--primary);
+    background-color: var(--white);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -327,17 +357,13 @@ button{
 /* sections main */
 
 
-.sections__main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .sections__main{
     background-color: var(--secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25px;
+
 }
 .sections__video-box{
     display: flex;
@@ -390,7 +416,7 @@ button{
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: var(--primary);
+    background-color: var(--white);
 }
 .fifth-line h1{
     font-weight: 400;
@@ -478,4 +504,382 @@ button{
 }
 .shop__slider span , i {
     font-size: var(--fs-small);
+}
+
+
+/* form */ 
+
+
+/* --- Contact Form Styling --- */
+
+.contact-section {
+    padding: 40px 20px;
+    background-color: var(--white); /* Assuming this section is against a white background */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the whole form structure */
+}
+
+.contact-section h1 {
+    font-size: var(--fs-section-title);
+    font-family: var(--font-body); /* Using font-body for a clean headline */
+    font-weight: 700; /* Bold headline */
+    color: var(--black);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.contact-form-design {
+    width: 100%;
+    max-width: 450px; /* Constraints the form width */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form-design input[type="text"],
+.contact-form-design input[type="email"],
+.contact-form-design input[type="tel"],
+.contact-form-design textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    font-size: var(--fs-body);
+    font-family: var(--font-body);
+    color: var(--black);
+    /* Removes default focus outline */
+    outline: none; 
+    transition: border-color 0.3s;
+}
+
+.contact-form-design textarea {
+    resize: vertical; /* Allows vertical resizing */
+    min-height: 120px;
+}
+
+/* Style for input focus */
+.contact-form-design input:focus,
+.contact-form-design textarea:focus {
+    border-color: var(--primary); /* Highlight with primary color on focus */
+}
+
+/* Submit Button Style (Black, rectangular) */
+.contact-submit-btn {
+    display: block; /* Takes up its own line */
+    padding: 12px 25px;
+    background-color: var(--black); /* Black background */
+    color: var(--white); /* White text */
+    border: none;
+    border-radius: 4px;
+    font-size: var(--fs-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-submit-btn:hover {
+    background-color: #333;
+}
+
+
+
+/* Help */
+
+
+.--outside{
+    padding: 40px 20px;
+}
+
+
+.footer {
+  padding: 40px 20px;
+  background: var(--primary);
+  color: var(--white);
+}
+.footer__menu,
+.footer__contact,
+.footer__subscribe,
+.footer__social {
+  margin-bottom: 30px;
+}
+
+
+/* company */
+
+footer .footer__company .about__us{
+    font-weight: 600;
+}
+.footer__menu li {
+  margin-bottom: 20px;
+}
+
+.footer__menu a {
+  color: var(--white);
+  text-decoration: none;
+}
+.footer__help .help , .footer__contact .contact{
+    font-weight: 600;
+}
+.footer__contact p {
+  margin: 10px 0;
+}
+.footer__contact .contact{
+    margin-bottom: 20px;
+}
+
+.footer__subscribe h3{
+    text-align: center;
+    font-size: var(--fs-section-title-main);
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+.footer__subscribe span ,.--sub-outside span{
+    text-align: center;
+    font-family: var(--fs-small);
+    margin-bottom: 15px;
+}
+.footer__social{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.footer__social i{
+  font-size: var(--fs-section-title);
+  color: var(--white);
+  margin-right: 20px;
+}
+
+
+
+/* subscribe */
+
+
+/* --- REFINED Subscribe Section Styling (Exact Box Look) --- */
+
+.footer__subscribe , .--sub-outside{
+    /* General section structure */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.footer__subscribe h3 , .--sub-outside h3{
+    /* Title style */
+    font-size: var(--fs-section-title);
+    font-weight: 700;
+    color: var(--white);
+    text-align: center; /* Centered title */
+
+}
+
+.subscribe-box-form {
+    /* KEY: The container that gets the border */
+    display: flex;
+    width: 100%;
+    /* THIN WHITE BORDER */
+    border: 1px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 2px;
+    padding: 0; /* No inner padding */
+    background: transparent;
+    overflow: hidden; 
+}
+
+
+.subscribe-box-form input {
+    /* Input field styling */
+    flex-grow: 1;
+    padding: 12px 15px; /* Controls the height of the box */
+    border: none;
+    background: transparent; /* KEY: Transparent background */
+    color: var(--white);
+    outline: none;
+    font-size: var(--fs-body);
+}
+
+.subscribe-box-form input::placeholder {
+    color: rgba(255, 255, 255, 0.8); /* Light placeholder color */
+}
+
+.subscribe-arrow-btn {
+    /* The button styling */
+    flex-shrink: 0;
+    background: transparent; /* No background color */
+    border: none;
+    padding: 12px 15px; 
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+/* --- ICON COLOR & WEIGHT FIXES --- */
+
+/* --- ICON COLOR & WEIGHT FIXES (Final Attempt) --- */
+
+/* Target the icon within the button within the form */
+.subscribe-box-form .subscribe-arrow-btn i {
+    /* 1. FORCE THE LIGHTER WEIGHT */
+    /* This overrides FA's default bold weight */
+    font-weight: 600; 
+    
+    /* 2. FORCE THE WHITE COLOR */
+    color: var(--white); 
+    
+    /* Ensure the icon is the size we want */
+    font-size: 1rem;
+    
+    /* Optional: Ensure the font family is Font Awesome (sometimes helps) */
+    font-family: "Font Awesome 6 Regular", "Font Awesome 6 Free" !important;
+}
+
+.subscribe-box-form .subscribe-arrow-btn:hover i {
+    color: var(--secondary) !important;
+}
+.--sub-outside{
+    padding: 40px 20px;
+    
+}
+.--sub-outside h3{
+    color: var(--black);
+}
+.--sub-outside .subscribe-box-form input{
+    
+    border-radius: 4px;
+    
+}
+.--sub-outside .subscribe-box-form{
+    border: 1px solid black;
+}
+.--sub-outside .subscribe-box-form input::placeholder{
+    color: var(--black);
+}
+.--sub-outside .subscribe-arrow-btn i{
+    color: var(--black);
+    
+}
+/* shop page */
+/* shop all */
+
+
+.shop-all{
+    /* margin-top: 120px; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.shop-all .shop__all__headline{
+    font-size: var(--fs-section-title-main);
+}
+
+.shop-all .shop__all__img-box{
+    padding-top: 30px;
+}
+/* nav shop */
+
+
+.shopnav{
+    background-color: var(--primary);
+    margin-bottom: 120px;
+}
+
+
+
+/* --- OUR STORY SECTION STYLING --- */
+
+
+
+.our-story-container {
+    background-color: var(--white, #ffffff); /* Ensure a white background */
+    /* Remove top padding here; the image handles the top spacing */
+    padding: 0 20px 60px 20px; /* Padding for bottom and sides */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* --- Image Styling --- */
+
+.story-image-wrapper {
+    width: 100%;
+    overflow: hidden; 
+}
+
+.story-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* --- Text Content Wrapper --- */
+
+.story-content-wrapper {
+    max-width: 700px; /* Slightly wider content box for readability */
+    width: 100%;
+    margin: 0 auto; 
+    padding-top: 40px; /* Space between the banner image and the text */
+    color: var(--black, #000000);
+}
+
+/* --- Heading Styling --- */
+
+.story-content-wrapper h1 {
+    font-size: 2.8rem; 
+    font-family: var(--font-main, 'Cormorant', serif); 
+    font-weight: 400; /* Regular weight for elegance */
+    color: var(--black, #000000);
+    margin-bottom: 25px;
+    text-align: left; 
+    line-height: 1.2;
+    /* Ensure Arabic text renders correctly */
+    direction: rtl; 
+    unicode-bidi: embed;
+}
+
+.story-content-wrapper h1 span[lang="en"] {
+    /* Style the English part of the header */
+    font-size: 1.5rem; /* Make the English secondary to the Arabic */
+    font-weight: 300;
+    font-family: var(--font-body, 'Lato', sans-serif); 
+    display: block; /* Puts the English subtitle on a new line */
+    direction: ltr;
+}
+
+
+/* --- Body Text Styling --- */
+
+.story-content-wrapper p {
+    font-size: var(--fs-body, 1rem);
+    font-family: var(--font-body, 'Lato', sans-serif); 
+    line-height: 1.8; 
+    margin-bottom: 20px;
+    color: var(--black, #000000);
+}
+
+.story-content-wrapper p b {
+    font-weight: 700; /* Ensures your bold text stands out */
+}
+
+/* --- Blockquote/Quote Styling --- */
+
+.story-quote {
+    font-size: 1.2rem; 
+    font-family: var(--font-main, 'Cormorant', serif); 
+    font-style: italic; /* Use italics for a distinct quote style */
+    font-weight: 400; 
+    line-height: 1.6;
+    margin: 30px 0; 
+    padding-left: 20px; 
+    border-left: 4px solid var(--primary, #000000); /* A strong separator line */
+    color: var(--black, #000000);
+}
+
+.story-quote p {
+    margin-bottom: 0;
 }

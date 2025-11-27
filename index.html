@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fuck off man</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -14,33 +15,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/82a5232d18.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
-    <div class="container">
+    <div class="fixed-header-wrapper">
 
-      <!-- the promo slider -->
+    <div class="promo-slider">
+        <i class="fa-solid fa-chevron-left"></i>
+        <p class="promo__sentence"><b>FREE SHIPPING FROM 150DT AND ABOVE</b></p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
 
-        <div class="promo-slider">
-            <i class="fa-solid fa-chevron-left"></i>
-            <p class="promo__sentence">cover up your body with our hijabs nikomk!</p>
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
-      
-      <!-- the navbar -->
-
-
-       <header class="nav">
+    <header class="nav">
         <i class="fa-solid fa-bars"></i>
         <div class="nav__logo-box">
-          <img src="images/final_logo.svg" alt="brand logo" class="nav__logo">
+            <a href="index.html"><img src="images/final_logo.svg" alt="brand logo" class="nav__logo"></a>
         </div>
         <div class="nav__tools">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <i class="fa-solid fa-bag-shopping"></i>
-      </div>
- </header>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+    </header>
 
+</div>
+
+ 
 
       <!-- Image Slideshow -->
 
@@ -49,7 +48,7 @@
         <div class="slideshow__img-box">
           <picture>
             <source srcset="images/Slide_Show_Banner/slideshow_landscape.webp" media="(orientation: landscape)">
-            <source srcset="images/Slide_Show_Banner/slideshow_portait.webp" media="(orientation: slideshow_portait)">
+            <source srcset="images/Slide_Show_Banner/cover.webp" media="(orientation: portrait)">
             <img src="images/Slide_Show_Banner/slideshow_portait.webp" alt="..." class="slideshow__img">
           </picture>
           
@@ -73,6 +72,15 @@
       </div>
 
 
+      <!-- first line -->
+
+
+      <div class="first-line">
+        <h1 class="headline">black friday access</h1>
+        <p class="headline__paragraph">New Offers Every Friday</p>
+      </div>
+
+
       <!-- section main -->
 
 
@@ -81,10 +89,10 @@
               <div class="sections__video-box">
               <i class="fa-solid fa-chevron-left fa--left"></i>
               <i class="fa-solid fa-chevron-right fa--right"></i>
-              <h1 class="pro__name">New arrivals</h1>
+              <!-- <h1 class="pro__name">New arrivals</h1> -->
               <video class="sections__video" autoplay muted loop playsinline>
-                <source src="videos/newarrivals_8V9fE4Ef.mp4" type="video/mp4">
-                <source src="videos/newarrivals_8V9fE4Ef.mp4" type="video/ogg">
+                <source src="videos/6837589-uhd-2160-4096-25fps_erx0MqTP.mp4" type="video/mp4">
+                <source src="videos/6837589-uhd-2160-4096-25fps_erx0MqTP.mp4" type="video/ogg">
               </video>
               <button class="view__all__btn">View All</button>
               
@@ -226,26 +234,7 @@
       </div>
 
 
-
-        <!--   <div class="sections__main">
- 
-              <div class="sections__video-box">
-              <i class="fa-solid fa-chevron-left fa--left"></i>
-              <i class="fa-solid fa-chevron-right fa--right"></i>
-              <h1 class="pro__name">New arrivals</h1>
-              <video class="sections__video" autoplay>
-                <source src="videos/newarrivals.mp4" type="video/mp4">
-                <source src="videos/newarrivals.mp4" type="video/ogg">
-              </video>
-              <button class="view__all__btn">View All</button>
-              
-
-            </div>
-            
-          </div> -->
-
-
-          <!-- fifth line -->
+      <!-- fifth  line -->
 
 
           <div class="fifth-line">
@@ -265,7 +254,7 @@
             <div class="new__text-container">
               <h1 class="new__headline">Little Magnet, Big Impact</h1>
               <p class="new__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis exercitationem architecto excepturi quas, saepe adipisci corrupti voluptatem quis, modi ducimus similique asperiores consectetur est in quos repellat voluptatibus quo quisquam velit soluta. Velit ratione nobis quod cumque et quaerat eum!</p>
-            <button class="new__btn --beige-btn">SHOP MAGNETS</button>
+            <button class="new__btn --beige-btn brb">SHOP MAGNETS</button>
             </div>
           </div>
 
@@ -342,13 +331,6 @@
                 </div>
 
 
-                
-
-
-
-
-
-
                 <div class="shop__slider">
                   <i class="fa-solid fa-chevron-left"></i>
                   <span>1/7</span>
@@ -358,6 +340,100 @@
 
               
           </div>
+
+
+          <!-- Send-questions -->
+
+          
+        <div class="contact-section">
+    <h1>Have questions? We'd love to hear from you!</h1>
+    
+    <form class="contact-form-design" action="#" method="POST">
+        
+        <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Name">
+        </div>
+        
+        <div class="form-group">
+            <input type="email" id="email" name="email" required placeholder="Email *">
+        </div>
+        
+        <div class="form-group">
+            <input type="tel" id="phone" name="phone" placeholder="Phone number">
+        </div>
+        
+        <div class="form-group">
+            <textarea id="message" name="message" rows="5" placeholder="What's on your mind?"></textarea>
+        </div>
+        
+        <button type="submit" class="contact-submit-btn">Send</button>
+    </form>
+</div>
+
+
+
+    <!-- footer -->
+
+
+   <footer class="footer">
+
+
+        <!-- company -->
+
+
+        <ul class="footer__menu footer__company">
+    <li><a href="#" class="about__us">About us</a></li>
+    <li><a href="ourstory.html" class="our__story">Our Story</a></li>
+    <li><a href="#">About our fabrics</a></li>
+    
+  </ul>
+
+  <!-- Help Menu -->
+  <ul class="footer__menu footer__help">
+    <li><a href="#" class="help">Help</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">Shipping & Returns</a></li>
+    <li><a href="#">Terms of Service</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+  </ul>
+
+  <!-- Contact Section -->
+  <div class="footer__contact">
+    <p class="contact">Contact</p>
+    <p>Call us Monday–Saturday,<br>9am–5pm EST</p>
+    <p>Email us anytime: <b>zahratalhayet@gmail.com</b></p>
+    <p>Phone: <b>25 878 656</b></p>
+  </div>
+
+
+  <!-- subcribe -->
+
+
+<div class="footer__subscribe">
+    <h3>Let's keep in touch!</h3>
+    <span>Subscribe to be the first to know about our new product releases, styling ideas and more.</span>
+    <form class="subscribe-box-form" action="#" method="POST">
+        <input type="email" name="email" required placeholder="Email">
+        
+        <button type="submit" class="subscribe-arrow-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </form>
+</div>
+
+  <!-- Social Links -->
+  <div class="footer__social">
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+  </div>
+
+</footer>
+
+
+
+
+
     </div>
     <script src="main.js"></script>
     
