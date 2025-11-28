@@ -379,7 +379,7 @@ button{
     padding: 10px;
     color: var(--white);
 }
-.sections__video-box button{
+.sections__video-box a{
     position: absolute;
     bottom: 0;
     margin: 20px;
@@ -463,7 +463,7 @@ button{
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    
+    background-color: var(--white);
 }
 .shop__container{
     display: flex;
@@ -477,6 +477,7 @@ button{
 .shop-category .shop__headline{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
+    color: var(--black);
 }
 .shop-category .shop__prod__container{
     min-width: 50%;
@@ -486,10 +487,9 @@ button{
     gap: 10px;
     align-items: center;
     padding: 10px 0px;
+    color: var(--black);
 }
-.shop-category .shop__prod__container .shop__img-box{
-    
-}
+
 .shop-category .shop__prod__container .shop__title p {
     font-size: var(--fs-product-title);
     position: relative;
@@ -501,6 +501,7 @@ button{
 .shop__slider{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .shop__slider span , i {
     font-size: var(--fs-small);
@@ -1289,4 +1290,76 @@ footer .footer__company .about__us{
     font-weight: 700;
     position: absolute;
     left: 0;
+}
+
+
+/* the latest  */
+
+
+.latest{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--white);
+}
+.latest .latest__headline{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.latest .latest__headline h1{
+    font-size: var(--fs-section-title-main);
+    font-family: var(--font-main);
+}
+
+.filter{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+    align-items: center;
+}
+.filter .filterandsort{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.quantity span{
+    color: gray;
+}
+
+/* jersey section */
+
+
+.--typeofclothes{
+    margin-bottom: 50px;
+    padding-top: 50px;
+    gap: 60px;
+}
+
+
+/* jerseyyy  */
+
+/* why we love it  */
+
+
+.whyweloveit{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.whyweloveit .reason{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.whyweloveit .reason p{
+    font-size: var(--fs-body);
+    font-weight: 600;
+}
+.whyweloveit .reason span{
+    line-height: 1.5rem;
 }
