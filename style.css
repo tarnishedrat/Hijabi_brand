@@ -30,6 +30,7 @@
   --fs-body: 0.95rem;          /* Normal text */
   --fs-small: 0.8rem;          /* Copyright, labels, etc. */
   --fixed-header-height: 116px;
+  --prod-title: rgb(55, 52, 52);
 }
 body{
     min-height: 100vh;
@@ -129,7 +130,9 @@ button{
     font-size: 1.3rem;
     color: var(--white);
 }
-
+.nav .--account__user{
+    display: none;
+}
 
 /* Main slideshow */
 
@@ -226,7 +229,7 @@ button{
     padding: 30px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
 }
-.secondary-line h1 , .first-line h1{
+.secondary-line h2 , .first-line h2{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
     text-align: center;
@@ -257,7 +260,7 @@ button{
     align-items: center;
     gap: 20px;
 }
-.thrid-line h1{
+.thrid-line h2{
     color: var(--black);
     max-width: 80%;
     text-align: center;
@@ -286,7 +289,7 @@ button{
     gap: 20px;
     padding: 25px 10px;
 }
-.latest-products h1{
+.latest-products h2{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
 }
@@ -311,6 +314,8 @@ button{
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: var(--fs-product-title);
+    color: var(--prod-title);
+    font-weight: 300;
 }
 .product-title{
     white-space: wrap;
@@ -320,6 +325,8 @@ button{
 }
 .latest-products .latest__cards .latest__card span{
     font-size: var(--fs-product-price);
+    color: var(--prod-title);
+    font-weight: 300;
 }
 .latest-products .latest__cards .latest__card img{
     width: 100%;
@@ -337,7 +344,7 @@ button{
     align-items: center;
     gap: 20px;
 }
-.forth-line h1{
+.forth-line h2{
     font-size: var(--fs-section-title);
     font-family: var(--font-body);
     font-weight: 400;
@@ -418,7 +425,7 @@ button{
     padding: 20px;
     background-color: var(--white);
 }
-.fifth-line h1{
+.fifth-line h2{
     font-weight: 400;
     font-size: var(--fs-section-title);
 }
@@ -444,7 +451,7 @@ button{
     align-items: start;
 }
 
-.new-innovation .new__text-container h1{
+.new-innovation .new__text-container h2{
     font-size: var(--fs-section-title);
     font-weight: 400;
 }
@@ -493,10 +500,13 @@ button{
 .shop-category .shop__prod__container .shop__title p {
     font-size: var(--fs-product-title);
     position: relative;
+    font-weight: 400;
+    color: var(--prod-title);
 }
 .shop-category .shop__prod__container .shop__title i{
     font-size: var(--fs-small);
     padding-top: 6px;
+    color: var(--prod-title);
 }
 .shop__slider{
     display: flex;
@@ -505,6 +515,7 @@ button{
 }
 .shop__slider span , i {
     font-size: var(--fs-small);
+    color: var(--prod-title);
 }
 
 
@@ -521,7 +532,7 @@ button{
     align-items: center; /* Centers the whole form structure */
 }
 
-.contact-section h1 {
+.contact-section h2 {
     font-size: var(--fs-section-title);
     font-family: var(--font-body); /* Using font-body for a clean headline */
     font-weight: 700; /* Bold headline */
@@ -646,7 +657,7 @@ footer .footer__company .about__us{
     gap: 20px;
     justify-content: center;
 }
-.footer__social i{
+.footer__social a i{
   font-size: var(--fs-section-title);
   color: var(--white);
   margin-right: 20px;
@@ -667,11 +678,19 @@ footer .footer__company .about__us{
     margin-top: 20px;
 }
 
-.footer__subscribe h3 , .--sub-outside h3{
+.footer__subscribe h2 {
     /* Title style */
     font-size: var(--fs-section-title);
     font-weight: 700;
     color: var(--white);
+    text-align: center; /* Centered title */
+
+}
+.--sub-outside h2{
+    /* Title style */
+    font-size: var(--fs-section-title);
+    font-weight: 700;
+    color: var(--black);
     text-align: center; /* Centered title */
 
 }
@@ -774,8 +793,12 @@ footer .footer__company .about__us{
     flex-direction: column;
     gap: 20px;
 }
-.shop-all .shop__all__headline{
+.shop-all h1{
     font-size: var(--fs-section-title-main);
+}
+
+.shop-all .landscape__text{
+    display: none;
 }
 
 .shop-all .shop__all__img-box{
@@ -802,6 +825,7 @@ footer .footer__company .about__us{
     display: flex;
     flex-direction: column;
     align-items: center; 
+ 
 }
 
 /* --- Image Styling --- */
@@ -810,6 +834,7 @@ footer .footer__company .about__us{
     width: 100%;
     overflow: hidden; 
     height: calc(50vh - var(--fixed-header-height));
+    margin-top: -1px; 
 }
 
 .story-banner-img {
@@ -824,7 +849,7 @@ footer .footer__company .about__us{
 .story-content-wrapper {
     max-width: 700px; /* Slightly wider content box for readability */
     width: 100%;
-    margin: 0 auto; 
+    margin: 50px auto; 
     padding: 20px; /* Space between the banner image and the text */
     color: var(--black, #000000);
 }
@@ -941,7 +966,7 @@ footer .footer__company .about__us{
     font-size: 2.5rem; 
     font-family: var(--font-main, 'Cormorant', serif); 
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .fabrics-content-wrapper h2 {
@@ -1069,12 +1094,13 @@ footer .footer__company .about__us{
 
 /* shipping reutrns */
 
-
 /* --- SHIPPING & RETURNS PAGE STYLING --- */
 
 .shipping-returns-container {
     max-width: 900px;
-    margin: 60px auto 80px auto;
+    /* Adjusted margin-top to account for the <main> element, 
+       and often better to push down from the top rather than margin on a main container */
+    margin: 60px auto 80px auto; 
     padding: 0 20px;
     color: var(--black, #000000);
     font-family: var(--font-body, 'Lato', sans-serif);
@@ -1088,11 +1114,20 @@ footer .footer__company .about__us{
     text-align: center;
 }
 
-.policy-section {
-    margin-bottom: 40px;
+/* NEW: Styling for the H2 headers within the policy sections */
+.policy-section h2 {
+    font-size: 2.0rem;
+    font-family: var(--font-main, 'Cormorant', serif);
+    font-weight: 500;
+    margin-bottom: 25px; /* Space below the sub-heading */
+    color: var(--primary, #000000);
 }
 
-
+.policy-section {
+    /* Kept the margin-bottom as is, but now it acts as the separation
+       between the policy sections (e.g., Shipping and Returns) */
+    margin-bottom: 40px;
+}
 
 .policy-section p {
     font-size: var(--fs-body, 1rem);
@@ -1148,6 +1183,17 @@ footer .footer__company .about__us{
     height: 1px;
     background: #ccc;
     margin: 50px 0;
+} 
+/* NEW: Ensure the contact-prompt is visually separated */
+.contact-prompt {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd; 
+}
+.contact-prompt p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 0; /* Remove extra space from the last paragraph */
 }
 
 
@@ -1349,17 +1395,303 @@ footer .footer__company .about__us{
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 .whyweloveit .reason{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.whyweloveit .reason p{
-    font-size: var(--fs-body);
-    font-weight: 600;
+.whyweloveit h2{
+    font-size: var(--fs-hero-title);
+    font-family: var(--font-main);
+    margin: 20px 0;
 }
-.whyweloveit .reason span{
+.whyweloveit .reason p{
     line-height: 1.5rem;
+    font-size: var(--fs-small);
+}
+
+
+
+
+/* LANDSCAPEEEEE MOBILE */
+
+
+
+@media (min-width: 768px){
+    .nav .--account__user{
+        display: block;
+    }
+    .nav{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .nav .nav__tools {
+        gap: 30px;
+    }
+    .headline__container{
+        width: 50%;
+    }
+    
+    
+    .latest-products .latest__cards{
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        
+    }
+    .latest-products .latest__cards .latest__card{
+        min-width: 250px;
+        max-width: 30%;
+        
+    }
+    .latest-products .latest__cards .latest__card img{ 
+        object-fit: cover;
+        object-position: bottom bottom;
+        max-height: 65vh;
+    }
+
+    /* NEW INNOVATIONNNN */
+    .new-innovation{
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+        
+    }
+    .new-innovation .new__text-container{
+        justify-content : space-between;
+        padding: 20px;
+    }
+
+    /*category*/
+
+
+
+    /*contact section*/
+
+    .contact-section .contact-form-design{
+        max-width: 80vw;
+        gap: 40px;
+
+    }
+    
+
+
+    /* footer */
+
+
+    .footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+    .footer__subscribe{
+       grid-column: 2 / 3;
+       text-align: center;
+    }
+    .footer__social{
+       grid-column: 2 / 3;
+       text-align: center;
+       padding-left: 20px;
+    }
+    
+    .footer__contact .contact{
+        margin: 0;
+    }
+
+
+    /* videoo */
+
+    .sections__main{
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        padding: 0;
+    }
+    .sections__main video{
+        width: 100%;
+        height: auto;
+        display: block
+    }
+
+
+    
+
+
+    .--sub-outside {
+    /* Keep the subscribe box centered and constrained for focus */
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.--sub-outside span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+
+/* our fabricss */
+
+
+/* --- GLOBAL MAIN CONTAINER --- */
+.--main {
+    /* Centralize content and add more desktop padding/margin */
+    padding: 20px 20px;
+}
+
+/* --- 1. OUR FABRICS SECTION (Image & Cropping Fixes) --- */
+
+/* Main Banner Image: Manage height and scaling */
+.fabrics-banner-img {
+    /* Ensure the image takes the full width of the constrained container (800px max) */
+    width: 100%; 
+    /* Set a reasonable maximum height for the desktop view */
+    max-height: 400px; 
+    /* FIX: Ensures the image scales nicely and covers the container without being stretched/distorted */
+    object-fit: cover; 
+    display: block;
+    margin-bottom: 40px;
+    object-position: center center;
+}
+
+/* Fabric Detail Section Images (woven, jersey, modal) */
+.fabric-section-img {
+    width: 100%;
+    /* Set a smaller, consistent max height for these detail images */
+    max-height: 300px; 
+    /* FIX: Ensures image scales nicely and covers the area */
+    object-fit: cover; 
+    display: block;
+    margin-bottom: 20px;
+    object-position: center center;
+}
+
+.fabric-section {
+    margin-bottom: 60px;
+}
+
+
+/* --- 2. SHOP BY CATEGORY SECTION (Horizontal Scroll) --- */
+
+/* Enable Flexbox and horizontal scrolling for the category wrapper */
+.shop__container {
+    display: flex; 
+    overflow-x: scroll; 
+    gap: 20px; /* Tighten up the space between cards slightly */
+    width: 100%;
+    margin-bottom: 40px;
+    padding-bottom: 20px; 
+}
+
+.shop-category .shop__prod__container{
+    /* Prevents the items from shrinking */
+   width: 60%;
+   min-width: 300px;
+    /* FIX: Make the cards smaller but uniform */ /* Adjusted to be slightly smaller than the last attempt */
+
+}
+
+/* Hide the mobile slider navigation */
+.shop__slider {
+    display: none;
+}
+
+/* Make category images smaller inside the fixed container */
+.shop__prod__container img {
+    max-height: 200px; /* Consistent height for smaller cards */
+    object-fit: cover;
+    object-position: bottom bottom;
+}
+
+
+/* --- 3. OUTSIDE SUBSCRIBE BOX (No change to centering) --- */
+
+.--sub-outside {
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+}
+.--sub-outside span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+
+
+/* jerseyy */
+
+
+/* --- FAQ CONTENT (.faq-con) --- */
+.faq-con {
+    padding: 0;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    
+}
+.questions__answers{
+    max-width: 50%;
+}
+.questions__answers h3{
+    font-size: var(--fs-small);
+}
+.faq-con h1 {
+    padding: 20px 50px;
+}
+.img__wrapper{
+    width: 100%;
+    height: auto;
+}
+.img__wrapper img{
+    object-fit: cover;
+    width: 100%;
+    max-height: 100vh;
+}
+
+
+/* chiffon */
+
+
+
+    .latest{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+
+    /* shop */
+
+
+    .shop-all{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .shop-all .shop__all__headline , .shop-all .shop__all__paragraph{
+        display: none;
+    }
+   .shop-all .landscape__text {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 40px;
+        padding: 20px;
+    }
+    .shop-all .shop__all__img-box{
+        padding: 20px;
+        
+    }
+    .shop-all .shop__all__img-box img{
+        max-height: 90%;
+        object-fit: cover;
+    }
+
+    .latest-products h2{
+        margin-bottom: 20px;
+    }
+
+
+}
+@media (min-width: 1024px){
+    
 }
