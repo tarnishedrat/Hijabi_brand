@@ -1530,6 +1530,10 @@ footer .footer__company .about__us{
 
 
 @media (min-width: 768px){
+
+    html{
+        overflow-x: hidden;
+    }
     .nav .--account__user{
         display: block;
     }
@@ -2074,7 +2078,6 @@ body{
         align-items: start;
         position: relative;
         width: 100vw;
-        background-color: green;
     }
     .sections__first__sec{
         max-height: 610px;
@@ -2155,10 +2158,7 @@ body{
     }
 
     /* shop the latest */
-.latest-products{
-   
-      
-}
+
 .--best-sellers{
     overflow-x: scroll;
 }
