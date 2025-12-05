@@ -11,6 +11,7 @@
     --black : #000000;
     --white: #FFF;
     --cream : #f4efe9;
+    --gray-text : rgb(95, 94, 94);
     /* --primary : #D7BFA5; */
     /* --primary : #c7a980; */
     --primary : #0F0F0F;
@@ -29,8 +30,12 @@
   --fs-product-price: 0.95rem; /* Prices */
   --fs-body: 0.95rem;          /* Normal text */
   --fs-small: 0.8rem;          /* Copyright, labels, etc. */
-  --fixed-header-height: 116px;
+  --fixed-header-height: 90.2px;
   --prod-title: rgb(55, 52, 52);
+
+
+
+  --fixed-promo-height : 38.4px
 }
 body{
     min-height: 100vh;
@@ -38,6 +43,9 @@ body{
     font-family: var(--font-body);
     font-weight: 300;
     color: black;
+    
+}
+main:not(.main){
     padding-top: calc(var(--fixed-header-height));
 }
 img {
@@ -70,7 +78,10 @@ button{
     font-size: var(--fs-small);
     font-weight: 400;
 }
-
+p , span{
+    font-weight: 400;
+    color: var(--gray-text);
+}
 
     /* Promo Slider */
     
@@ -78,30 +89,31 @@ button{
 
 .promo-slider{
     width: 100%;
-    background-color: var(--white);
-    padding: 10px;
+    background-color: var(--black);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2px;
 }
 .promo-slider p{
-    color: gray;
-    font-size: var(--fs-body);
+    color:var(--white);
+    font-size: var(--fs-small);
 }
-.promo-slider i{
-    color: gray;
+.promo-slider svg{
+    width: 25px;
+    height: 25px;
 }
     /* navbar */
 
 
 .nav{
     width: 100%;
-    padding: 30px 10px;
-    background-color: var(--primary);
+    padding: 5px 10px;
+    background-color: black;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-   
+    justify-content: center;
+    
 } 
 .fixed-header-wrapper {
     position: fixed;
@@ -109,30 +121,60 @@ button{
     left: 0;
     width: 100%;
     z-index: 1000; 
-    background-color: var(--white); 
 }  
-.nav .nav__logo-box{
-    height: 70%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.fixed-header-wrapper{
+        z-index: 9999;
+    }
+    .nav .menu_icon{
+        width: 30px;
+        position: absolute;
+        left: 10px;
 }
-.nav .nav__logo-box img{
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
+    
+
+.nav .nav__tools svg{
+    width: 30px;
 }
-.nav .nav__tools{
+.nav__tools{
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    position: absolute;
+    right: 10px;
 }
-.nav i{
-    font-size: 1.3rem;
-    color: var(--white);
+.--main-desktop{
+    display: none !important;
 }
-.nav .--account__user{
+.--desktop-secondary-line{
+    display: none !important;
+}
+.--desktop-third-line{
+    display: none !important;
+}
+
+.nav__tools .user_icon{
     display: none;
 }
+
+.nav .nav__logo-box {
+    display: flex;
+    align-items: center;
+    
+}
+.nav .nav__logo-box h2{
+    font-family: var(--font-main);
+    font-size: var(--fs-hero-title);
+    color: white;
+}
+.nav .nav__logo-box svg {
+  width: 180px;    /* change to fit your nav */
+  height: auto;
+  display: block;  /* avoid inline-gap issues */
+  vertical-align: middle;
+}
+.nav .nav__logo-box a{
+    margin-top: 5px;
+}
+
 
 /* Main slideshow */
 
@@ -142,12 +184,11 @@ button{
     position: relative;
     margin: 0;
     padding: 0;
-    height: calc(100vh - var(--fixed-header-height));
+    height: 100vh;
 }
 .slideshow__img-box{
     width: 100%;
     height: 100%;
-    background-color: red;
 }
 .slideshow img{
     width: 100%;
@@ -184,7 +225,7 @@ button{
 
 .headline__container{
     position: absolute;
-    bottom: 8%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -193,7 +234,7 @@ button{
     padding: 10px;
     color: var(--white);
     background-color: transparent;
-    backdrop-filter: blur(5px);
+    
     border-radius: 15px;
     width: 90%;
     
@@ -209,6 +250,7 @@ button{
     font-family: var(--font-body);
     padding: 10px 0px;
     text-align: center;
+    color: var(--white);
 }
 .button__container{
     padding: 10px 5px;
@@ -221,7 +263,7 @@ button{
 
 
 .secondary-line , .first-line{
-    background-color: var(--white);
+    background-color: var(--cream);
     line-height: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -239,7 +281,8 @@ button{
     font-size: var(--fs-small);
     font-family: var(--font-body);
     text-align: center;
-    color: var(--black);
+    color: var(--gray-text);
+    font-weight: 400;
 }
 .first-line{
     background: var(--cream);
@@ -250,9 +293,9 @@ button{
 
 
 .thrid-line{
-    background: var(--secondary);
+    background: var(--white);
     backdrop-filter: blur(10px);
-    padding: 20px;
+    padding: 30px;
     font-size: var(--fs-small);
     margin-top: -10px;
     display: flex;
@@ -289,6 +332,12 @@ button{
     gap: 20px;
     padding: 25px 10px;
 }
+.--latest__card__scroll{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(160px , 1fr));
+    gap: 7px;
+    row-gap: 10px;
+}
 .latest-products h2{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
@@ -315,7 +364,7 @@ button{
     text-overflow: ellipsis;
     font-size: var(--fs-product-title);
     color: var(--prod-title);
-    font-weight: 300;
+    font-weight: 400;
 }
 .product-title{
     white-space: wrap;
@@ -326,7 +375,7 @@ button{
 .latest-products .latest__cards .latest__card span{
     font-size: var(--fs-product-price);
     color: var(--prod-title);
-    font-weight: 300;
+    font-weight: 400;
 }
 .latest-products .latest__cards .latest__card img{
     width: 100%;
@@ -354,12 +403,14 @@ button{
 .forth-line p{
     font-size: var(--fs-small);
     text-align: center;
-    color: var(--black);
 }
 .forth-line span,i{
     color: var(--black);
 }
 
+.--desktop__forth_line{
+    display: none;
+}
 
 /* sections main */
 
@@ -409,6 +460,12 @@ button{
 }
 .sections__main video{
     width: 100%;
+}
+.sections__video-box svg{
+    width: 35px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
 
 
@@ -622,20 +679,28 @@ button{
 
 footer .footer__company .about__us{
     font-weight: 600;
+    text-decoration: none;
+    color: var(--white);
 }
 .footer__menu li {
   margin-bottom: 20px;
 }
 
-.footer__menu a {
-  color: var(--white);
+.footer__menu a:not(.about__us , .help){
+  color: rgb(186, 183, 183);
   text-decoration: none;
+  font-weight: 400;
 }
 .footer__help .help , .footer__contact .contact{
     font-weight: 600;
+    text-decoration: none;
+    color: var(--white);
 }
 .footer__contact p {
   margin: 10px 0;
+  color: rgb(186, 183, 183);
+  font-weight: 400;
+  
 }
 .footer__contact .contact{
     margin-bottom: 20px;
@@ -651,6 +716,10 @@ footer .footer__company .about__us{
     text-align: center;
     font-family: var(--fs-small);
     margin-bottom: 15px;
+    
+}
+.footer__subscribe span {
+    color: rgb(186, 183, 183);
 }
 .footer__social{
     display: flex;
@@ -1343,7 +1412,7 @@ footer .footer__company .about__us{
 
 
 .latest{
-    padding: 20px;
+    padding: 20px 60px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1353,10 +1422,18 @@ footer .footer__company .about__us{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 .latest .latest__headline h1{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
+}
+.latest .latest__headline .text__con {
+    max-width: 50%;
+     display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .filter{
@@ -1365,13 +1442,22 @@ footer .footer__company .about__us{
     width: 100%;
     gap: 50px;
     align-items: center;
+    padding: 0 85px;
+    margin-bottom: 20px;
 }
 .filter .filterandsort{
     display: flex;
     gap: 10px;
     align-items: center;
+    cursor: pointer;
 }
-
+.filter .filterandsort span{
+    font-size: var(--fs-body);
+    font-weight: 400;
+}
+.filter .filterandsort svg{
+    width: 25px;
+}
 .quantity span{
     color: gray;
 }
@@ -1413,7 +1499,19 @@ footer .footer__company .about__us{
 }
 
 
+/*ELEMENTS TO HIDE*/
 
+
+.desktop_img{
+    display: none;
+}
+.--desktop-secondary-line , .--desktop-third-line{
+    display: none;
+}
+
+.--main-ipad{
+    display: none;
+}
 
 /* LANDSCAPEEEEE MOBILE */
 
@@ -1430,22 +1528,148 @@ footer .footer__company .about__us{
     .nav .nav__tools {
         gap: 30px;
     }
+    .nav__tools .user_icon{
+        display: block;
+    }
     .headline__container{
         width: 50%;
     }
-    
-    
-    .latest-products .latest__cards{
-        gap: 20px;
+    .--main-mobile{
+        display: none;
+    }
+
+    /* IPADD */
+    .--main-ipad{
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        
+        background-color: var(--black);
+        max-height: 610px;
+        padding: 0;
+        overflow: hidden;
+        align-items: start;
+        position: relative;
     }
-    .latest-products .latest__cards .latest__card{
-        min-width: 250px;
-        max-width: 30%;
+    .--main-ipad .sections__first__sec .sections__img-box{
         
+        max-height: 100%;
     }
+
+    .--main-ipad .sections__headline__container{
+        position: absolute;
+        display: flex;
+        width: 50%;
+        justify-content: center;
+    }
+    .--main-ipad .sections__headline__container h3{
+        font-size: var(--fs-section-title-main);
+        font-family: var(--font-main);
+        color: var(--white);
+       
+    }
+
+    .--main-ipad .sections__first__sec .sections__img-box img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .--main-ipad .sections__first__sec .sections__img-box img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .--main-ipad .sections__text-con{
+        position: absolute;
+        color: var(--white);
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+        width: 50%;
+        z-index: 2;
+        justify-content: center;
+    }
+    .--main-ipad .sections__first__sec .sections__text-con h3{
+        font-size: var(--fs-product-title);
+    }
+    .--main-ipad .sections__first__sec .sections__text-con span{
+        font-size: var(--fs-small);
+        font-weight: 400;
+        color: var(--white);
+    }
+
+
+    .latest-products .latest__cards{
+           display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        box-sizing: border-box;
+        width: fit-content;
+        margin: 0 auto;
+        max-width: 800px;
+        padding-left: 0 !important;
+}
+.latest-products .latest__cards .latest__card {
+        flex: 0 0 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+body{
+    overflow-x: hidden;
+}
+
+
+
+
+
+.latest-products{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.latest-products .--latest__card__scroll{
+    display: flex;
+    flex-wrap: nowrap; 
+    
+    /* Sets the gaps and padding */
+    gap: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    /* Enables horizontal scrolling when the combined width of cards exceeds the container width */
+    overflow-x: scroll;
+    
+    padding-bottom: 20px;
+    /* Optional: Remove the default red background once you're done debugging */
+    /* background-color: red; */
+}
+
+.--latest__card__scroll .latest__card {
+    /* 2. Sets the minimum width to 250px. The card will never be smaller than this. */
+    
+    max-width: 250px;
+    flex-grow: 1; 
+    flex-shrink: 0; 
+
+    
+}
+
+/* Style for the filter div to span full width */
+.latest-products .latest__cards .filter {
+  width: 100%;
+  /* Add your filter styling here */
+}
+
+
+    
     .latest-products .latest__cards .latest__card img{ 
         object-fit: cover;
         object-position: bottom bottom;
@@ -1496,6 +1720,7 @@ footer .footer__company .about__us{
     
     .footer__contact .contact{
         margin: 0;
+        color: var(--white);
     }
 
 
@@ -1511,9 +1736,13 @@ footer .footer__company .about__us{
         height: auto;
         display: block
     }
+    .forth-line{
+        display: none;
+    }
 
-
-    
+    .--desktop__forth_line{
+        display: flex;
+    }
 
 
     .--sub-outside {
@@ -1670,12 +1899,23 @@ footer .footer__company .about__us{
         display: none;
     }
    .shop-all .landscape__text {
-        display: block;
+        
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        align-items: center;
+        justify-content: center;
         gap: 40px;
         padding: 20px;
+    }
+    .shop-all .landscape__text .text__con{
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .shop-all .landscape__text .text__con h1{
+        font-family: var(--font-main);
+        font-size: var(--fs-section-title-main);
     }
     .shop-all .shop__all__img-box{
         padding: 20px;
@@ -1692,6 +1932,285 @@ footer .footer__company .about__us{
 
 
 }
-@media (min-width: 1024px){
+@media (min-width: 1200px){
+    /* DISPLAY NONE TO BLOCKED ITEMSS */
+    .--main-ipad{
+        display: none;
+    }
+    .--main-desktop{
+    display: grid !important;
+}
+.--desktop-secondary-line{
+    display: flex !important;
+    padding: 20px;
+}
+
+
+
     
+    .fixed-header-wrapper{
+        z-index: 9999;
+    }
+    .nav .menu_icon{
+        width: 20px;
+}
+    
+
+.nav .nav__tools svg{
+    width: 20px;
+}
+.nav .nav__tools:last-child{
+    font-size: 88px;
+ 
+}
+.nav .nav__logo-box {
+    display: flex;
+    align-items: center;
+}
+.nav .nav__logo-box h2{
+    font-family: var(--font-main);
+    font-size: var(--fs-hero-title);
+    color: white;
+}
+.nav .nav__logo-box svg {
+  width: 180px;    /* change to fit your nav */
+  height: auto;
+  display: block;  /* avoid inline-gap issues */
+  vertical-align: middle;
+}
+.nav .nav__logo-box a{
+    margin-top: 5px;
+}
+    .mobile_img{
+        display: none;
+    }
+    .slideshow{
+        min-height: 100vh;
+    }
+    .slideshow__img-box{
+        overflow: hidden;
+    }
+    .headline__container{
+        max-width: 70%;
+        min-width: 50%;
+        padding: 50px;
+        gap: 10px;
+        backdrop-filter: blur(0px);
+    }
+    .desktop_img{
+        display: block;
+        max-height: calc(100vh - var(--fixed-promo-height));
+       
+        object-fit: cover;
+        object-position: bottom bottom;
+    }
+    .fixed-header-wrapper{
+        background: transparent;
+    }
+
+
+    .first-line{
+        display: none;
+    }
+
+    .desktop_img{
+    display: block;
+}
+    .--desktop-secondary-line , .--desktop-third-line{
+        display: block;
+    }
+
+    .thrid-line {
+        background: var(--white);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        font-size: var(--fs-small);
+        margin-top: -10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 0;
+        
+    }
+    .thrid-line h2{
+        max-width: 50%;
+    }
+    .thrid-line p{
+        max-width: 60%;
+        line-height: 1.3rem;
+        color: var(--gray-text);
+        color: var();
+        font-weight: 400;
+        padding-bottom: 20px;
+    }
+
+
+    /* main section */
+
+
+    .--main-mobile{
+        display: none;
+    }
+    .--main-desktop{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: var(--black);
+        max-height: 610px;
+        padding: 0;
+        overflow: hidden;
+        align-items: start;
+        position: relative;
+    }
+    .sections__first__sec{
+        max-height: 610px;
+        position: relative;
+    }
+    .sections__first__sec .sections__img-box{
+        
+        max-height: 100%;
+    }
+/*  */
+    
+
+
+    /*  */
+    .sections__first__sec .sections__img-box img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .sections__text-con{
+        position: absolute;
+        color: var(--white);
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+        width: 100%;
+        z-index: 2;
+    }
+    .sections__first__sec .sections__text-con h3{
+        font-size: var(--fs-product-title);
+    }
+    .sections__first__sec .sections__text-con span{
+        font-size: var(--fs-small);
+        font-weight: 400;
+        color: var(--white);
+    }
+    .sections__first__sec .sections__headline , .sections__video-box .sections__headline{
+        color: var(--white);
+        
+        font-family: var(--font-main);
+        
+        
+    }
+    .sections__first__sec .sections__headline__container , .sections__video-box .sections__headline__container{
+        background-color: transparent;
+        position: absolute;
+        top: 10px;
+        z-index: 999;
+        width: 100%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+    }
+    .sections__video-box {
+        max-height: 610px;
+        position: relative;
+
+        overflow: hidden;
+    }
+    .sections__video-box svg{
+        position: absolute;
+        bottom: 30px;
+        width: 30px;
+        right: 20px;
+    }
+    .sections__video-box .sections__video {
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
+    }
+    .sections__video-box a{
+        position: absolute;
+        bottom: 10px;
+    }
+
+    /* shop the latest */
+.latest-products{
+   
+      
+}
+.--best-sellers{
+    overflow-x: scroll;
+}
+
+
+.latest-products .--latest__card__scroll{
+    display: flex;
+    flex-wrap: nowrap; 
+    
+    /* Sets the gaps and padding */
+    gap: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    /* Enables horizontal scrolling when the combined width of cards exceeds the container width */
+    overflow-x: scroll;
+    
+    padding-bottom: 20px;
+    /* Optional: Remove the default red background once you're done debugging */
+    /* background-color: red; */
+}
+
+.--latest__card__scroll .latest__card {
+    /* 2. Sets the minimum width to 250px. The card will never be smaller than this. */
+    
+    max-width: 250px;
+    flex-grow: 1; 
+    flex-shrink: 0; 
+
+    
+}
+.latest-products{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.latest-products .latest__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  
+  /* This makes the container only as wide as its content */
+  width: fit-content;
+  margin: 0 auto; /* Centers the container itself */
+  max-width: 1200px;
+  padding-left: 0 !important;
+}
+
+.latest-products .latest__cards .latest__card {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .--desktop-secondary-line, .--desktop-third-line{
+        display: none;
+    }
 }
