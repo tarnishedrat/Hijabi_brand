@@ -2093,6 +2093,75 @@ body{
         max-width: 30%;
         height: 100vh;
     }
+.latest__card {
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s ease; /* subtle card zoom */
+}
+
+.latest__card:hover {
+    transform: scale(1.03); /* card slightly zooms on hover */
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.3; /* card proportions */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* smooth fade + zoom */
+    transition: 
+        opacity .45s ease,
+        transform .45s cubic-bezier(.25, .46, .45, .94);
+}
+
+/* DEFAULT IMAGE VISIBLE */
+.img-default {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* HOVER IMAGE HIDDEN */
+.img-hover {
+    opacity: 0;
+    z-index: 2; /* on top */
+}
+
+/* ON HOVER */
+.latest__card:hover .img-default {
+    opacity: 0;
+    transform: scale(1.08); /* zoom out slightly */
+}
+
+.latest__card:hover .img-hover {
+    opacity: 1;
+    transform: scale(1.0); /* zoom in to normal size */
+}
+
+/* Optional: wrapper styling (titles/prices) */
+.latest__wrapper {
+    margin-top: 10px;
+}
+
+.latest__prod__title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111;
+}
+
+.latest__prod__price {
+    font-size: 0.9rem;
+    color: #777;
+}
 
 
 

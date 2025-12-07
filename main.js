@@ -34,27 +34,4 @@ menuCloseIcon.addEventListener('click' , menuClose);
 
 
 /* CARDSSS */
-let cards = document.querySelectorAll('.latest__card')
-let cardsImgs = document.querySelectorAll('.latest__card img')
-
-
-for (let x = 0; x < cards.length; x++) {
-    const cardAnimationOver = ()=> {
-        
-        setTimeout(() => {
-            cardsImgs[x].src = 'images/product_pictures/prodimg2.webp'
-            cardsImgs[x].style.opacity ='1'
-        }, 200);
-        
-        
-    }
-    const cardAnimationOut = ()=> {
-        cardsImgs[x].src = 'images/product_pictures/prodimg.webp'
-    }
-
-
-    cards[x].addEventListener('mouseover' , cardAnimationOver)
-    cards[x].addEventListener('mouseout' , cardAnimationOut)
-    
-}
 
