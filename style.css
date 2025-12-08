@@ -462,43 +462,123 @@ p , span{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
 }
-.latest-products .latest__cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(160px , 1fr));
-    gap: 7px;
-    row-gap: 10px;
+/* ---------- Cards grid (responsive) ---------- */
+.latest-products .latest__cards {
+  display: grid;
+  /* slightly larger min width so cards don't collapse on tiny screens */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  row-gap: 12px;
+  align-items: start; /* keep card tops aligned when titles wrap */
 }
-.latest-products .latest__cards .latest__card{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+/* Card layout */
+.latest-products .latest__cards .latest__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%; /* allow equal-height grid items if parent constrains */
 }
-.latest-products .latest__cards .latest__card .latest__wrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+/* Keep wrapper as column */
+.latest-products .latest__cards .latest__card .latest__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-.latest-products .latest__cards .latest__card p{
-    white-space: wrap;
-    overflow: hidden;
+
+/* Image: fixed aspect ratio so cards keep consistent height */
+/* container must be positioned */
+.card-image {
+  position: relative; /* ensures children absolute-position relative to this box */
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  overflow: hidden;
+}
+
+/* force both images to fill and stack exactly */
+.card-image > img,
+.card-image .latest__img,
+.card-image img.latest__img {
+  position: absolute;    /* stack on top of each other */
+  inset: 0;              /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  transition:
+    opacity .45s ease,
+    transform .45s cubic-bezier(.25, .46, .45, .94);
+  -webkit-backface-visibility: hidden; /* reduce flicker on iOS */
+}
+
+/* ensure proper stacking order and default states */
+.img-default,
+.latest__img.img-default {
+  z-index: 1;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.img-hover,
+.latest__img.img-hover {
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.07); /* subtle pre-zoom so fade-in looks nice */
+  pointer-events: none;   /* allow hover to reach the card */
+}
+
+/* hover state */
+.latest__card:hover .img-default,
+.latest__card:hover .latest__img.img-default {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+.latest__card:hover .img-hover,
+.latest__card:hover .latest__img.img-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* Product title: multiline ellipsis (2 lines) */
+.latest-products .latest__cards .latest__card p,
+.product-title {
+  /* reset invalid value */
+  white-space: normal;
+  overflow: hidden;
+  font-size: var(--fs-product-title);
+  color: var(--prod-title);
+  font-weight: 400;
     text-overflow: ellipsis;
-    font-size: var(--fs-product-title);
-    color: var(--prod-title);
-    font-weight: 400;
+  /* multiline truncation */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;      /* show max 2 lines */
+  -webkit-box-orient: vertical;
 }
-.product-title{
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: var(--fs-product-title);
+
+/* price styling */
+.latest-products .latest__cards .latest__card span {
+  font-size: var(--fs-product-price);
+  color: var(--prod-title);
+  font-weight: 600;
 }
-.latest-products .latest__cards .latest__card span{
-    font-size: var(--fs-product-price);
-    color: var(--prod-title);
-    font-weight: 400;
-}
-.latest-products .latest__cards .latest__card img{
-    width: 100%;
+
+/* Optional: smaller cards on very small screens */
+@media (max-width: 420px) {
+  .latest-products .latest__cards {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+
+  /* reduce title size a bit to avoid 3rd line */
+  .latest-products .latest__cards .latest__card p,
+  .product-title {
+    font-size: calc(var(--fs-product-title) * 0.95);
+    -webkit-line-clamp: 2;
+  }
 }
 
 
@@ -1727,14 +1807,12 @@ footer .footer__company .about__us{
 
 
     .latest-products .latest__cards{
-           display: flex;
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 8px;
         box-sizing: border-box;
-        width: fit-content;
-        margin: 0 auto;
-        max-width: 800px;
+        margin: 0 20px;
         padding-left: 0 !important;
 }
 .latest-products .latest__cards .latest__card {
@@ -1744,6 +1822,7 @@ footer .footer__company .about__us{
         gap: 10px;
         padding-left: 0;
         padding-right: 0;
+        
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         max-width: 250px;
         transition: 0.3s ease;
@@ -1755,6 +1834,7 @@ footer .footer__company .about__us{
     }
     .latest-products .latest__cards .latest__card .latest__wrapper{
         padding: 0 10px;
+        height: 60px;
     }
 body{
     overflow-x: hidden;
@@ -1769,53 +1849,107 @@ body{
     padding-right: 0;
 }
 
-.latest-products .--latest__card__scroll{
-    display: flex;
-    flex-wrap: nowrap; 
-    
-    /* Sets the gaps and padding */
-    gap: 5px;
-    padding-left: 60px;
-    padding-right: 60px;
-    margin-left: 0;
-    margin-right: 0;
-    /* Enables horizontal scrolling when the combined width of cards exceeds the container width */
-    overflow-x: scroll;
-    
-    padding-bottom: 20px;
-    /* Optional: Remove the default red background once you're done debugging */
-    /* background-color: red; */
+/* === BEST SELLERS CARDS (same as Shop the Latest) === */
+.latest-products.--best-sellers {
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.--latest__card__scroll .latest__card {
-    /* 2. Sets the minimum width to 250px. The card will never be smaller than this. */
-    transition: 0.3s ease-in-out;
-    max-width: 250px;
-    flex-grow: 1; 
-    flex-shrink: 0; 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    
+.latest-products.--best-sellers .latest__title {
+    margin-bottom: 20px;
 }
-.--latest__card__scroll .latest__card .latest__wrapper{
-    padding: 10px;
+
+/* Horizontal scroll wrapper */
+.latest-products.--best-sellers .--latest__card__scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px; /* keeps padding on both sides */
+    overflow-y: visible !important;
+}
+
+/* Add a spacer before the first card */
+.latest-products.--best-sellers .--latest__card__scroll::before {
+    content: "";
+    flex: 0 0 20px; /* same as left padding for symmetry */
+    overflow-y: visible;
+}
+
+/* Ensure cards behave properly */
+.latest-products .--best-sellers .latest__card {
+    flex: 0 0 auto;
+    min-width: 250px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+}
+
+.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Card styling */
+.latest-products.--best-sellers .latest__card {
+    flex: 0 0 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        max-width: 250px;
+        transition: 0.3s ease;
+        
+}
+
+/* Hover zoom effect */
+.latest-products.--best-sellers .latest__card:hover {
+   
+}
+
+/* Image inside card */
+.latest-products.--best-sellers .latest__card .latest__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 325px;
+}
+
+/* Wrapper inside card (title + price) */
+.latest-products.--best-sellers .latest__card .latest__wrapper {
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-/* Style for the filter div to span full width */
-.latest-products .latest__cards .filter {
-  width: 100%;
-  /* Add your filter styling here */
+    gap: 6px;
+    margin-top: 10px;
+    height: 60px;
 }
 
+/* Product title */
+.latest-products.--best-sellers .latest__prod__title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--prod-title);
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* max 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    margin: 0;
+}
 
-    
-    .latest-products .latest__cards .latest__card img{ 
-        object-fit: cover;
-        object-position: bottom bottom;
-        max-height: 65vh;
-        transition: opacity 0.3s ease-in-out;
-    }
+/* Price */
+.latest-products.--best-sellers .latest__prod__price {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--prod-title);
+}
+
 
     /* NEW INNOVATIONNNN */
     .new-innovation{
@@ -2421,70 +2555,6 @@ body{
 
 
 
-.latest-products .--latest__card__scroll{
-    display: flex;
-    flex-wrap: nowrap; 
-    
-    /* Sets the gaps and padding */
-    gap: 5px;
-    padding-left: 60px;
-    padding-right: 60px;
-    margin-left: 0;
-    margin-right: 0;
-    /* Enables horizontal scrolling when the combined width of cards exceeds the container width */
-    overflow-x: scroll;
-    
-    padding-bottom: 20px;
-    /* Optional: Remove the default red background once you're done debugging */
-    /* background-color: red; */
-}
-
-.--latest__card__scroll .latest__card {
-    /* 2. Sets the minimum width to 250px. The card will never be smaller than this. */
-    
-    max-width: 250px;
-    flex-grow: 1; 
-    flex-shrink: 0; 
-
-    
-}
-.latest-products{
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.latest-products .latest__cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  box-sizing: border-box;
-  /* This makes the container only as wide as its content */
-  width: fit-content;
-  margin: 0 auto; /* Centers the container itself */
-  max-width: 1200px;
-  padding-left: 0 !important;
-}
-
-.latest-products .latest__cards .latest__card {
-  flex: 0 0 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-left: 0;
-  padding-right: 0;
-  flex-grow: 0;
-  max-width: 250px;
-}
-
-
-    body{
-        overflow-x: hidden;
-    }
-
-    .--desktop-secondary-line, .--desktop-third-line{
-        display: none;
-    }
 
 
 
@@ -2507,4 +2577,44 @@ body{
   background: #666;
 }
 
+
+
+/* Horizontal scroll container */
+
+
+.--latest__card__scroll::-webkit-scrollbar {
+    display: none;              /* Chrome/Safari */
 }
+
+/* Keep card size normal – SAME as your original cards */
+.latest__card {
+    min-width: 250px;           /* very important: prevents shrinking */
+    max-width: 250px;
+    flex: 0 0 auto;             /* prevents shrinking/stretching */
+    scroll-snap-align: start;
+}
+
+/* Image styling stays normal */
+.latest__img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Wrapper inside card – same as you had */
+.latest__wrapper {
+    padding: 10px;
+}
+
+
+
+.latest__prod__price {
+    font-weight: 600;
+    font-size: 1rem;
+}
+}
+
+
+
+
+
