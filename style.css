@@ -1824,12 +1824,14 @@ footer .footer__company .about__us{
         padding-right: 0;
         
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
         max-width: 250px;
         transition: 0.3s ease;
     }
     .latest__cards .latest__card:hover , .--latest__card__scroll .latest__card:hover {
         cursor: pointer;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
         transform: translateY(-5px);
     }
     .latest-products .latest__cards .latest__card .latest__wrapper{
@@ -1855,9 +1857,6 @@ body{
     padding-right: 0;
 }
 
-.latest-products.--best-sellers .latest__title {
-    margin-bottom: 20px;
-}
 
 /* Horizontal scroll wrapper */
 .latest-products.--best-sellers .--latest__card__scroll {
@@ -1867,8 +1866,9 @@ body{
     overflow-x: auto;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px; /* keeps padding on both sides */
+    padding: 10px 20px; /* keeps padding on both sides */
     overflow-y: visible !important;
+    
 }
 
 /* Add a spacer before the first card */
@@ -1881,11 +1881,16 @@ body{
 /* Ensure cards behave properly */
 .latest-products .--best-sellers .latest__card {
     flex: 0 0 auto;
-    min-width: 250px;
+    
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: 0.3s ease;
+    background-color: red;
 }
-
+.latest-products.--best-sellers .latest__card:hover{
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
 .latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
 }
@@ -1898,7 +1903,7 @@ body{
         gap: 10px;
         padding-left: 0;
         padding-right: 0;
-        
+   
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         max-width: 250px;
         transition: 0.3s ease;
@@ -1906,9 +1911,7 @@ body{
 }
 
 /* Hover zoom effect */
-.latest-products.--best-sellers .latest__card:hover {
-   
-}
+
 
 /* Image inside card */
 .latest-products.--best-sellers .latest__card .latest__img {
@@ -1927,6 +1930,8 @@ body{
     gap: 6px;
     margin-top: 10px;
     height: 60px;
+
+
 }
 
 /* Product title */

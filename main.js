@@ -33,5 +33,13 @@ menuOpenIcon.addEventListener('click' , menuOpen);
 menuCloseIcon.addEventListener('click' , menuClose);
 
 
-/* CARDSSS */
+/* category */
 
+let category = document.querySelector('.shop-category')
+let categoryImgs = document.querySelectorAll('.shop-category img')
+
+console.log(categoryImgs)
+
+categoryImgs.forEach(img => {
+    img.src ='images/product_pictures/prodimg3.webp'
+})
