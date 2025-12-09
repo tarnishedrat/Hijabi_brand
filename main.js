@@ -188,3 +188,37 @@ const PlayVideo = () =>{
 
 sectionPause.addEventListener('click' , PauseVideo)
 sectionPlay.addEventListener('click' , PlayVideo)
+
+
+/* sSCROLL */
+
+
+const slider = document.querySelector('.latest-products.--best-sellers .--latest__card__scroll');
+let isDragging = false;
+let startX, scrollStart;
+
+slider.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollStart = slider.scrollLeft;
+    slider.classList.add('dragging');
+    e.preventDefault();
+});
+
+slider.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.classList.remove('dragging');
+});
+slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.classList.remove('dragging');
+});
+
+slider.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = x - startX;
+    slider.scrollLeft = scrollStart - walk;
+});
+

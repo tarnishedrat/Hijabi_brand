@@ -1958,7 +1958,7 @@ footer .footer__company .about__us{
         margin: 0 20px;
         padding-left: 0 !important;
 }
-.latest-products .latest__cards .latest__card {
+    .latest-products .latest__cards .latest__card {
         flex: 0 0 250px;
         display: flex;
         flex-direction: column;
@@ -1981,9 +1981,9 @@ footer .footer__company .about__us{
         padding: 0 10px;
         height: 60px;
     }
-body{
+    body{
     overflow-x: hidden;
-}
+    }
 
 
 
@@ -1998,6 +1998,7 @@ body{
 .latest-products.--best-sellers {
     padding-left: 0;
     padding-right: 0;
+
 }
 
 
@@ -2006,13 +2007,31 @@ body{
     display: flex;
     flex-wrap: nowrap;
     gap: 8px;
-    overflow-x: auto;
-    width: 100%;
+    padding-right: 20px;
+    overflow-x: auto;   /* horizontal scroll */
+    overflow-y: hidden; /* hide vertical scroll */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* snapping effect */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on touch devices *
+
+
+    padding: 10px 20px;
     box-sizing: border-box;
-    padding: 10px 20px; /* keeps padding on both sides */
-    overflow-y: visible !important;
-    
+
+    /* force the scroll container to not grow beyond viewport */
+    max-width: 100%;
 }
+/* Cursor feedback while dragging */
+.--latest__card__scroll {
+    cursor: grab;
+    user-select: none;
+}
+.--latest__card__scroll.dragging {
+    cursor: grabbing;
+}
+
+
+
 
 /* Add a spacer before the first card */
 .latest-products.--best-sellers .--latest__card__scroll::before {
@@ -2023,20 +2042,18 @@ body{
 
 /* Ensure cards behave properly */
 .latest-products .--best-sellers .latest__card {
-    flex: 0 0 auto;
-    
+    flex: 0 0 250px;
+    min-width: 250px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: 0.3s ease;
-    background-color: red;
+    scroll-snap-align: start; 
 }
 .latest-products.--best-sellers .latest__card:hover{
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
 }
-.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
+
 
 /* Card styling */
 .latest-products.--best-sellers .latest__card {
@@ -2099,7 +2116,28 @@ body{
 }
 
 
-    /* NEW INNOVATIONNNN */
+.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
+    height: 4px; /* small scrollbar */
+}
+
+.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar-thumb {
+
+    border-radius: 3px;
+}
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 18px;
+}
+.carousel .item {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+
+
+/* NEW INNOVATIONNNN */
     .new-innovation{
        display: grid;
        grid-template-columns: 1fr 1fr;
@@ -2740,17 +2778,9 @@ body{
 /* Horizontal scroll container */
 
 
-.--latest__card__scroll::-webkit-scrollbar {
-    display: none;              /* Chrome/Safari */
-}
 
 /* Keep card size normal – SAME as your original cards */
-.latest__card {
-    min-width: 250px;           /* very important: prevents shrinking */
-    max-width: 250px;
-    flex: 0 0 auto;             /* prevents shrinking/stretching */
-    scroll-snap-align: start;
-}
+
 
 /* Image styling stays normal */
 .latest__img {
@@ -2770,6 +2800,17 @@ body{
     font-weight: 600;
     font-size: 1rem;
 }
+
+.latest-products.--best-sellers .--latest__card__scroll {
+        display: flex; /* make sure it’s still flex */
+        overflow-x: auto; /* ensure scroll is still enabled */
+        flex-wrap: nowrap; /* don’t wrap */
+    }
+
+
+
+
+
 }
 
 
