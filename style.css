@@ -629,7 +629,10 @@ p , span{
   flex-direction: column;
   gap: 6px;
 }
-
+.--latest__card__scroll .latest__card span{
+    color: var(--prod-title);
+    font-weight: 600;
+}
 /* Image: fixed aspect ratio so cards keep consistent height */
 /* container must be positioned */
 .card-image {
@@ -728,7 +731,7 @@ p , span{
 /* forthline */
 
 
-.forth-line{
+.--desktop__forth_line{
     background-color: var(--white);
     padding: 20px;
     display: flex;
@@ -736,23 +739,38 @@ p , span{
     align-items: center;
     gap: 20px;
 }
-.forth-line h2{
+.--desktop__forth_line h2{
     font-size: var(--fs-section-title);
     font-family: var(--font-body);
     font-weight: 400;
     word-spacing: 1px;
     color: var(--black);
 }
-.forth-line p{
+.--desktop__forth_line p{
     font-size: var(--fs-small);
     text-align: center;
 }
-.forth-line span,i{
+.--desktop__forth_line span,i{
     color: var(--black);
 }
+/* Hide original slide elements because we only use their text */
+.forth__slides-container {
+    display: none !important;
+}
 
-.--desktop__forth_line{
-    display: none;
+
+
+/* Add this to your CSS */
+.forth__headline, 
+.forth_paragraph {
+    transition: opacity 0.8s ease; /* smooth fade */
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+}
+.fade-in {
+    opacity: 1;
 }
 
 /* sections main */
@@ -862,61 +880,6 @@ p , span{
 }
 
 
-/* shop by category */
-
-
-.shop-category{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background-color: var(--white);
-}
-.shop__container{
-    display: flex;
-    gap: 5px;
-    overflow-x: auto;
-}
-.shop-category .shop__headline__container{
-    display: flex;
-    justify-content: center;
-}
-.shop-category .shop__headline{
-    font-size: var(--fs-section-title-main);
-    font-family: var(--font-main);
-    color: var(--black);
-}
-.shop-category .shop__prod__container{
-    min-width: 50%;
-}
-.shop-category .shop__prod__container .shop__title{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 10px 0px;
-    color: var(--black);
-}
-
-.shop-category .shop__prod__container .shop__title p {
-    font-size: var(--fs-product-title);
-    position: relative;
-    font-weight: 400;
-    color: var(--prod-title);
-}
-.shop-category .shop__prod__container .shop__title i{
-    font-size: var(--fs-small);
-    padding-top: 6px;
-    color: var(--prod-title);
-}
-.shop__slider{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.shop__slider span , i {
-    font-size: var(--fs-small);
-    color: var(--prod-title);
-}
 
 
 /* form */ 
@@ -1856,11 +1819,227 @@ footer .footer__company .about__us{
     display: none;
 }
 
+
+/* CATEGORYYYYYYY */
+
+
+
+/* ===== SHOP BY CATEGORY — replacement CSS =====
+   - Horizontal scroll on desktop/tablet
+   - Smaller cards on mobile (<768px)
+   - Images WILL NOT shrink/distort: fixed image box + object-fit:cover
+   - Keeps your current HTML and inline SVGs
+*/
+
+/* Base container */
+.shop-category {
+  padding: 28px 18px;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  position: relative;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Headline row */
+.shop__headline__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.shop__headline {
+  font-size: 1.45rem;
+  margin: 0;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Horizontal scroller (default behavior) */
+.shop__container {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
+  
+}
+
+
+
+/* scrollbar style (optional) */
+.shop__container::-webkit-scrollbar { height: 8px; transition: 1s ease; }
+.shop__container::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 8px; }
+
+/* Card (desktop default) */
+.shop__prod__container {
+  flex: 0 0 280px;    /* desktop card width */
+  min-width: 240px;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(10,10,20,0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep anchor full-size */
+.shop__link { display: block; color: inherit; text-decoration: none; height: 100%; }
+
+/* IMAGE BOX: fixed visual height so images don't shrink or stretch */
+.shop__img-box {
+  width: 100%;
+  height: 180px;       /* desktop image height */
+  min-height: 120px;
+  overflow: hidden;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image: fill the box, crop by cover, no distortion */
+.shop__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s cubic-bezier(.22,.9,.35,1);
+  transform-origin: center center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* prevent image from shrinking below container */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Title row */
+.shop__title {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.shop__product-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: #111;
+}
+
+/* small chevron svg inside card */
+.shop__title svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(0,0,0,0.45);
+}
+
+/* Hover effects (subtle premium lift + image zoom) */
+.shop__prod__container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(8,8,20,0.06);
+}
+.shop__prod__container:hover .shop__img {
+  transform: scale(1.06);
+}
+
+/* Slider controls (if you keep .shop__slider visible) */
+.shop__slider {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.shop__nav {
+  background: rgba(0,0,0,0.06);
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .12s ease, transform .12s ease;
+  color: #111;
+}
+.shop__nav:hover { background: rgba(0,0,0,0.09); transform: translateY(-2px); }
+
+/* ===== MOBILE: make cards significantly smaller, images keep cover and do not shrink ===== */
+
+
+
+/* ===== TABLET: mild adjustments ===== */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .shop__prod__container { flex: 0 0 260px; min-width: 240px; max-width: 300px; }
+  .shop__img-box { height: 160px; min-height: 140px; }
+}
+
+/* ===== LARGE SCREENS: grid fallback (optional) =====
+   if you prefer to always keep horizontal scroll remove this media section */
+/* @media (min-width: 1200px) {
+  .shop__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    overflow: visible;
+  }
+  .shop__prod__container { border-radius: 12px; }
+  .shop__img-box { height: 200px; min-height: 160px; }
+  .shop__slider { display: none; } 
+}
+ */
+/* ensure consistent box-sizing */
+.shop__prod__container,
+.shop__img-box,
+.shop__img,
+.shop__title,
+.shop__product-title {
+  box-sizing: border-box;
+}
+/* keep existing desktop behavior (absolute top/right) elsewhere */
+/* BELOW 1200px: move .shop__slider BELOW the scroller, centered */
+@media (max-width: 1199px) {
+  .shop__slider {
+    position: static !important; /* allow natural flow below the scroller */
+    display: flex !important;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+    align-items: center;
+    right: auto;
+    top: auto;
+  }
+  .shop__slider i{
+    cursor: pointer;
+  }
+
+  /* reduce size slightly on smaller screens */
+  .shop__nav { width: 34px; height: 34px; }
+  .shop__nav svg { width: 14px; height: 14px; }
+}
+
+
+
+
+
 /* LANDSCAPEEEEE MOBILE */
 
 
 
-@media (min-width: 768px){
+@media (min-width: 768px){  
+
 
     html{
         overflow-x: hidden;
@@ -1995,145 +2174,153 @@ footer .footer__company .about__us{
 }
 
 /* === BEST SELLERS CARDS (same as Shop the Latest) === */
-.latest-products.--best-sellers {
-    padding-left: 0;
-    padding-right: 0;
-
-}
-
-
-/* Horizontal scroll wrapper */
-.latest-products.--best-sellers .--latest__card__scroll {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
-    padding-right: 20px;
-    overflow-x: auto;   /* horizontal scroll */
-    overflow-y: hidden; /* hide vertical scroll */
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; /* snapping effect */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on touch devices *
-
-
-    padding: 10px 20px;
-    box-sizing: border-box;
-
-    /* force the scroll container to not grow beyond viewport */
-    max-width: 100%;
-}
-/* Cursor feedback while dragging */
-.--latest__card__scroll {
-    cursor: grab;
-    user-select: none;
-}
-.--latest__card__scroll.dragging {
-    cursor: grabbing;
-}
-
-
-
-
-/* Add a spacer before the first card */
-.latest-products.--best-sellers .--latest__card__scroll::before {
-    content: "";
-    flex: 0 0 20px; /* same as left padding for symmetry */
-    overflow-y: visible;
-}
-
-/* Ensure cards behave properly */
-.latest-products .--best-sellers .latest__card {
-    flex: 0 0 250px;
-    min-width: 250px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease;
-    scroll-snap-align: start; 
-}
-.latest-products.--best-sellers .latest__card:hover{
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-}
-
-
-/* Card styling */
-.latest-products.--best-sellers .latest__card {
-    flex: 0 0 250px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .latest-products.--best-sellers {
         padding-left: 0;
         padding-right: 0;
-   
+
+    }
+
+
+    /* Horizontal scroll wrapper */
+    .latest-products.--best-sellers .--latest__card__scroll {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        overflow-x: auto;   /* horizontal scroll */
+        overflow-y: hidden; /* hide vertical scroll */
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory; /* snapping effect */
+        -webkit-overflow-scrolling: touch; /* smooth scroll on touch devices *
+
+
+        padding: 10px 20px;
+        box-sizing: border-box;
+
+        /* force the scroll container to not grow beyond viewport */
+        max-width: 100%;
+    }
+    /* Cursor feedback while dragging */
+
+
+
+
+    /* Add a spacer before the first card */
+    .latest-products.--best-sellers .--latest__card__scroll::before {
+        content: "";
+        flex: 0 0 20px; /* same as left padding for symmetry */
+        overflow-y: visible;
+    }
+
+    /* Ensure cards behave properly */
+    .latest-products .--best-sellers .latest__card {
+        flex: 0 0 250px;
+        min-width: 250px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        max-width: 250px;
         transition: 0.3s ease;
-        
-}
+        scroll-snap-align: start; 
+        overflow: hidden;
+        max-height: 380px;
+    }
+    .latest-products.--best-sellers .latest__card:hover{
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
+    .latest-products.--best-sellers .latest__card:hover img{
+        transform: scale(1.1);
+        overflow: hidden;
 
-/* Hover zoom effect */
+    }
 
 
-/* Image inside card */
-.latest-products.--best-sellers .latest__card .latest__img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    max-height: 325px;
-}
+    /* Card styling */
+    .latest-products.--best-sellers .latest__card {
+            flex: 0 0 250px;
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            padding-right: 0;
+            gap: 0;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            max-width: 250px;
+            transition: 0.3s ease;
+            max-height: 360px;
+    }
 
-/* Wrapper inside card (title + price) */
-.latest-products.--best-sellers .latest__card .latest__wrapper {
-    padding: 0 10px;
+    /* Hover zoom effect */
+
+
+    /* Image inside card */
+    .latest-products.--best-sellers .latest__card .latest__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        max-height: 325px;
+        transition:  all 0.2s ease;
+        overflow: hidden;
+    }
+
+    /* Wrapper inside card (title + price) */
+    .latest-products.--best-sellers .latest__card .latest__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        height: 80px;
+        z-index: 2;
+        overflow: hidden;
+        background-color: var(--white);
+        padding: 10px;
+        margin: 0;;
+    }
+
+    /* Product title */
+    .latest-products.--best-sellers .latest__prod__title {
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--prod-title);
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* max 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.2;
+        margin: 0;
+        z-index: 999999999999;
+    }
+
+    /* Price */
+    .latest-products.--best-sellers .latest__prod__price {
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--prod-title);
+    }
+
+
+    .latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
+        height: 4px; /* small scrollbar */
+        max-width: 50vw;
+        border-radius: 0 !important;
+    }
+
+
+    .latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar-thumb {
+        background-color: rgb(170, 169, 169);
+        border-radius: 3px;
+    }
+    .carousel {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 10px;
-    height: 60px;
-
-
-}
-
-/* Product title */
-.latest-products.--best-sellers .latest__prod__title {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--prod-title);
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* max 2 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.2;
-    margin: 0;
-}
-
-/* Price */
-.latest-products.--best-sellers .latest__prod__price {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--prod-title);
-}
-
-
-.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar {
-    height: 4px; /* small scrollbar */
-}
-
-.latest-products.--best-sellers .--latest__card__scroll::-webkit-scrollbar-thumb {
-
-    border-radius: 3px;
-}
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 18px;
-}
-.carousel .item {
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 18px;
+    }
+    .carousel .item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    }
 
 
 
@@ -2197,13 +2384,16 @@ footer .footer__company .about__us{
         height: auto;
         display: block
     }
-    .forth-line{
-        display: none;
-    }
+    .forth__slides-container {
+    display: flex;
+    transition: transform 0.5s ease; /* smooth sliding */
+    width: 300%; /* 3 slides */
+}
 
-    .--desktop__forth_line{
-        display: flex;
-    }
+.forth__slide {
+    width: 100%; /* each slide takes full section width */
+    flex-shrink: 0;
+}
 
 
     .--sub-outside {
@@ -2260,37 +2450,7 @@ footer .footer__company .about__us{
 }
 
 
-/* --- 2. SHOP BY CATEGORY SECTION (Horizontal Scroll) --- */
 
-/* Enable Flexbox and horizontal scrolling for the category wrapper */
-.shop__container {
-    display: flex; 
-    overflow-x: scroll; 
-    gap: 20px; /* Tighten up the space between cards slightly */
-    width: 100%;
-    margin-bottom: 40px;
-    padding-bottom: 20px; 
-}
-
-.shop-category .shop__prod__container{
-    /* Prevents the items from shrinking */
-   width: 60%;
-   min-width: 300px;
-    /* FIX: Make the cards smaller but uniform */ /* Adjusted to be slightly smaller than the last attempt */
-
-}
-
-/* Hide the mobile slider navigation */
-.shop__slider {
-    display: none;
-}
-
-/* Make category images smaller inside the fixed container */
-.shop__prod__container img {
-    max-height: 200px; /* Consistent height for smaller cards */
-    object-fit: cover;
-    object-position: bottom bottom;
-}
 
 
 /* --- 3. OUTSIDE SUBSCRIBE BOX (No change to centering) --- */
@@ -2759,14 +2919,14 @@ footer .footer__company .about__us{
   height: 3px;
 }
 
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: black;
 
 }
 
 ::-webkit-scrollbar-thumb {
   background: #999;
-  border-radius: 10px;
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
