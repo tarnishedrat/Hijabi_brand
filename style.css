@@ -2054,15 +2054,19 @@ footer .footer__company .about__us{
     html{
         overflow-x: hidden;
     }
-    .nav .--account__user{
+    .--account__user{
         display: block;
     }
-    .nav{
+    .nav , .nav__main{
         padding-left: 50px;
         padding-right: 50px;
     }
-    .nav .nav__tools {
+    .nav .nav__tools , .nav__main .nav__tools{
         gap: 30px;
+    }
+    .nav .nav__tools svg , .nav__main .nav__tools svg{
+        width: 20px;
+        height: 20px;
     }
     .nav__tools .user_icon{
         display: block;
