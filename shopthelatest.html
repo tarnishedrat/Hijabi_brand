@@ -21,22 +21,47 @@
     <div class="container">
 
        <div class="fixed-header-wrapper">
-        <div class="promo-slider">
-            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M4 12L8 8M4 12L8 16" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            <p class="promo__sentence"><b>FREE SHIPPING FROM 150DT AND ABOVE</b></p>
-           <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        </div>
+       <div class="promo-slider">
+    <svg class="promo-prev" width="64px" height="64px" viewBox="0 0 24 24" fill="none" stroke="#ffffff">
+        <path d="M4 12H20M4 12L8 8M4 12L8 16" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+
+    <p class="promo-text"></p>
+
+    <svg class="promo-next" width="64px" height="64px" viewBox="0 0 24 24" fill="none" stroke="#ffffff">
+        <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
 
         <header class="nav">
+        <svg class="menu_close" width="64px" height="64px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 21.32L21 3.32001" stroke="#ffffff" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 3.32001L21 21.32" stroke="#ffffff" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         <svg class="menu_icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Menu_Duo_LG"> <path id="Vector" d="M3 15H21M3 9H21" stroke="#ffffff" stroke-width="1.32" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>            <div class="nav__logo-box">
-                <!-- <a href="index.html"><img src="images/final_logo.svg" alt="brand logo" class="nav__logo"></a> -->
-                <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
-  <rect width="100%" height="100%" fill="none"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="140"
-        letter-spacing="0.35em"
-        fill="#ffffff">
+        <!-- Menu -->
+
+
+        <div class="menu">
+    <ul class="menu__ul">
+        <li class="newarrival"><a href="shopthelatest.html">New Arrivals</a></li>
+        <li><a href="ourbestsellers.html">Best Sellers</a></li>
+        <li><a href="shop.html">All Products</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="jersey.html">Jersey</a></li>
+        <li><a href="chiffon.html">chiffon</a></li>
+        <li><a href="woven.html">woven</a></li>
+        <li class="aof"><a href="aboutourfabrics.html">About Our Fabrics</a></li>
+    </ul>
+</div>
+
+            
+            
+          <!-- devotion -->  
+            <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+        <rect width="100%" height="100%" fill="none"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Georgia, 'Times New Roman', serif"
+            font-size="140"
+            letter-spacing="0.35em"
+            fill="#ffffff">
     DEVOTION
   </text>
 </svg>
@@ -55,7 +80,7 @@
             <section class="latest"> <div class="latest__headline">
                     <div class="text__con">
                         <h1>Our latest products</h1>
-                    <span>the brand new products just came in hot ,brand new hijabs and shit like that.</span>
+                    <span>the brand new products just came in hot ,brand new watches and shit like that.</span>
                     </div>
                     
                 </div>
@@ -66,9 +91,7 @@
 
 
             <section class="latest-products"> <h2 class="latest__title">Just in.</h2>
-                
-                <div class="latest__cards">
-                    <div class="filter">
+                <div class="filter">
                     <div class="filterandsort">
                         <i class="fa-solid fa-sliders"></i>
                         <span>filter and sort</span>
@@ -77,142 +100,201 @@
                         <span>9 products</span>
                     </div>
                 </div>
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <div class="latest__wrapper">
-                            <p class="latest__prod__title product-title">Premium jersey Hijab - light minkkkkkkkkkkkkkkkkkkzdkdazkd</p>
-                            <span class="latest__prod__price">$20.00</span>
-                        </div>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <div class="latest__wrapper">
-                            <p class="latest__prod__title product-title">Premium jersey Hijab - light</p>
-                            <span class="latest__prod__price">$20.00</span>
-                        </div>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title  product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-
-                    <div class="latest__card">
-                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
-                        <p class="latest__prod__title product-title">Premium jersey Hijab - light mink</p>
-                        <span class="latest__prod__price">$20.00</span>
-                    </div>
-                </div>
-                
-            </section>
-
-
-            <section class="shop-category"> <div class="shop__headline__container">
-                    <h2 class="shop__headline">Shop By Category</h2>
-                </div>
-                
-                <div class="shop__container">
-                    <div class="shop__prod__container">
-                        <a href="jersey.html">
-                            <div class="shop__img-box">
-                                <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="..." class="shop__img">
-                            </div>
-                        
-                            <div class="shop__title">
-                                <p class="shop__ product-title">jersey hijabs</p>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="shop__prod__container">
-                        <a href="woven.html">
-                            <div class="shop__img-box">
-                                <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="..." class="shop__img">
-                            </div>
-                        
-                            <div class="shop__title">
-                                <p class="shop__ product-title">jersey hijabs</p>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="shop__prod__container">
-                        <a href="chiffon.html">
-                            <div class="shop__img-box">
-                                <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="..." class="shop__img">
-                            </div>
-                        
-                            <div class="shop__title">
-                                <p class="shop__ product-title">jersey hijabs</p>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="shop__prod__container">
-                        <a href="chiffon.html">
-                            <div class="shop__img-box">
-                                <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="..." class="shop__img">
-                            </div>
-                        
-                            <div class="shop__title">
-                                <p class="shop__ product-title">jersey hijabs</p>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="shop__prod__container">
-                        <a href="chiffon.html">
-                            <div class="shop__img-box">
-                                <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="..." class="shop__img">
-                            </div>
-                        
-                            <div class="shop__title">
-                                <p class="shop__ product-title">jersey hijabs</p>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    </div>
+                <div class="latest__cards">
                     
-                </div>
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">glorious watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
 
-                <div class="shop__slider">
-                    <i class="fa-solid fa-chevron-left"></i>
-                    <span>1/7</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">glorious watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">linux watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">linux watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">linux watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">glorious watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">glorious watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+                    <div class="latest__card">
+                        <img src="images/product_pictures/prodimg.webp" alt="..." class="latest__img">
+                        <div class="latest__wrapper">
+                            <p class="latest__prod__title product-title">glorious watch</p>
+                            <span class="latest__prod__price">$20.00</span>
+                        </div>
+                    </div>
+                
             </section>
+
+
+
+
+
+                   <!-- FORTHH LINEEE -->
+
+
+           <!-- FORTHH LINEEE -->
+
+
+
+                   <section class="forth-line --desktop__forth_line">
+    <div class="forth__slides-container">
+        <div class="forth__slide">
+            <h2 class="forth__headline">UNPARALLELED QUALITY</h2>
+            <p class="forth_paragraph">Our hijabs & accessories are made to last from nest-in-class materials. You won't find them anywhere else.</p>
+        </div>
+        <div class="forth__slide">
+            <h2 class="forth__headline">ELEGANT DESIGNS</h2>
+            <p class="forth_paragraph">Each piece is crafted to make you stand out. Feel confident with our unique hijabs.</p>
+        </div>
+        <div class="forth__slide">
+            <h2 class="forth__headline">COMFORT & STYLE</h2>
+            <p class="forth_paragraph">Soft, breathable fabrics combined with stunning designs — perfect for every occasion.</p>
+        </div>
+    </div>
+
+    <div class="forth__slider">
+        <span>1/3</span>
+       
+    </div>
+</section>
+
+
+
+
+
+
+             <section class="shop-category"> 
+  <div class="shop__headline__container">
+    <h2 class="shop__headline">Shop By Category</h2>
+  </div>
+
+  <div class="shop__container">
+    <div class="shop__prod__container">
+      <a href="jersey.html">
+        <div class="shop__img-box">
+          <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="Jersey hijabs category link" class="shop__img">
+        </div>
+        <div class="shop__title">
+          <p class="shop__ product-title">jersey hijabs</p>
+          <!-- premium right chevron SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="shop__prod__container">
+      <a href="woven.html">
+        <div class="shop__img-box">
+          <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="Woven hijabs category link" class="shop__img">
+        </div>
+        <div class="shop__title">
+          <p class="shop__ product-title">woven hijabs</p>
+          <!-- premium right chevron SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="shop__prod__container">
+      <a href="chiffon.html">
+        <div class="shop__img-box">
+          <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="Chiffon hijabs category link" class="shop__img">
+        </div>
+        <div class="shop__title">
+          <p class="shop__ product-title">chiffon hijabs</p>
+          <!-- premium right chevron SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="shop__prod__container">
+      <a href="chiffon.html">
+        <div class="shop__img-box">
+          <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="Category link" class="shop__img">
+        </div>
+        <div class="shop__title">
+          <p class="shop__ product-title">chiffon hijabs</p>
+          <!-- premium right chevron SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="shop__prod__container">
+      <a href="chiffon.html">
+        <div class="shop__img-box">
+          <img src="images/product_pictures/rafaella-mendes-diniz-et_78QkMMQs-unsplash.webp" alt="Category link" class="shop__img">
+        </div>
+        <div class="shop__title">
+          <p class="shop__ product-title">chiffon hijabs</p>
+          <!-- premium right chevron SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="shop__slider">
+    <i class="fa-solid fa-chevron-left"></i>
+    <span>1/5</span>
+    <i class="fa-solid fa-chevron-right"></i>
+  </div>
+</section>
+
+
 
 
             <section class="--sub-outside"> <h2>Let's keep in touch!</h2>
@@ -274,7 +356,7 @@
         </footer>
     </div>
         
-    <script src="main.js"></script>
+    <script src="secondary.js"></script>
 
 
 </body>

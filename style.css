@@ -30,8 +30,8 @@
   --fs-product-price: 0.95rem; /* Prices */
   --fs-body: 0.95rem;          /* Normal text */
   --fs-small: 0.8rem;          /* Copyright, labels, etc. */
-  --fixed-header-height-phone: 81.5px;
-  --fixed-header-height : 89px;
+  --fixed-header-height-phone: 80.5px;
+  --fixed-header-height : 78.5px;
   --prod-title: rgb(55, 52, 52);
 
 
@@ -242,7 +242,6 @@ p , span{
     display: flex;
     align-items: center;
     justify-content: center;
-    
 } 
 .nav__main{
      width: 100%;
@@ -252,6 +251,7 @@ p , span{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 51.5px;
 }
 .fixed-header-wrapper {
     position: fixed;
@@ -259,6 +259,7 @@ p , span{
     left: 0;
     width: 100%;
     z-index: 1000; 
+    height: var(--fixed-header-height-phone);
 }  
 .fixed-header-wrapper{
     z-index: 9999;
@@ -439,7 +440,7 @@ p , span{
     color: white;
 }
 .nav .nav__logo-box svg , .nav__main .nav__logo-box svg{
-  width: 150px;    /* change to fit your nav */
+  width: 140px;   /* change to fit your nav */
   height: auto;
   display: block;  /* avoid inline-gap issues */
   vertical-align: middle;
@@ -619,7 +620,7 @@ p , span{
 .latest-products .latest__cards {
   display: grid;
   /* slightly larger min width so cards don't collapse on tiny screens */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 10px;
   row-gap: 12px;
   align-items: start; /* keep card tops aligned when titles wrap */
@@ -631,6 +632,8 @@ p , span{
   flex-direction: column;
   gap: 10px;
   height: 100%; /* allow equal-height grid items if parent constrains */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
 }
 
 /* Keep wrapper as column */
@@ -638,6 +641,8 @@ p , span{
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
+  padding: 0 10px;
 }
 .--latest__card__scroll .latest__card span{
     color: var(--prod-title);
@@ -708,11 +713,13 @@ p , span{
   font-size: var(--fs-product-title);
   color: var(--prod-title);
   font-weight: 400;
+  width: 100%;
     text-overflow: ellipsis;
   /* multiline truncation */
   display: -webkit-box;
   -webkit-line-clamp: 2;      /* show max 2 lines */
   -webkit-box-orient: vertical;
+  text-transform: capitalize;
 }
 
 /* price styling */
@@ -1758,7 +1765,7 @@ footer .footer__company .about__us{
     width: 100%;
     gap: 50px;
     align-items: center;
-    padding: 0 85px;
+    padding: 0 20px;
     margin-bottom: 20px;
 }
 .filter .filterandsort{
@@ -2040,7 +2047,10 @@ footer .footer__company .about__us{
   .shop__nav svg { width: 14px; height: 14px; }
 }
 
-
+ .latest-products .latest__cards .latest__card .latest__wrapper{
+        padding: 0 10px;
+        height: 60px;
+    }
 
 
 
@@ -2062,7 +2072,7 @@ footer .footer__company .about__us{
         padding-right: 50px;
     }
     .nav .nav__tools , .nav__main .nav__tools{
-        gap: 30px;
+        gap: 20px;
     }
     .nav .nav__tools svg , .nav__main .nav__tools svg{
         width: 20px;
@@ -2159,7 +2169,7 @@ footer .footer__company .about__us{
         padding-left: 0;
         padding-right: 0;
         
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        
 
         max-width: 250px;
         transition: 0.3s ease;
@@ -2170,10 +2180,7 @@ footer .footer__company .about__us{
 
         transform: translateY(-5px);
     }
-    .latest-products .latest__cards .latest__card .latest__wrapper{
-        padding: 0 10px;
-        height: 60px;
-    }
+   
     body{
     overflow-x: hidden;
     }
@@ -2653,7 +2660,7 @@ footer .footer__company .about__us{
 }
 
 .nav .menu{
-    top: var(--fixed-header-height-phone);
+    top: var(--fixed-header-height);
 }
 
 
