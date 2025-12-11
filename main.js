@@ -1,11 +1,11 @@
 /* -------Menu-------- */
-const nav = document.querySelector('.nav');
+const nav = document.querySelector('.nav__main');
 document.addEventListener("DOMContentLoaded", () => {
     const menu = document.querySelector(".menu");
     const burger = document.querySelector(".menu_icon");
     const closeIcon = document.querySelector(".menu_close");
-    const nav = document.querySelector('.nav');
-
+    const nav = document.querySelector('.nav__main');
+    console.log(nav)
     burger.addEventListener("click", () => {
         menu.classList.add("active");
         nav.style.backgroundColor = '#000000';
@@ -193,7 +193,7 @@ sectionPlay.addEventListener('click' , PlayVideo)
 /* sSCROLL */
 
 
-const slider = document.querySelector('.--latest__card__scroll');
+/* const slider = document.querySelector('.--latest__card__scroll');
 
 let isDown = false;
 let startX;
@@ -238,7 +238,7 @@ function momentum(){
     momentumID = requestAnimationFrame(momentum);
   }
 }
-
+ */
 
 
 /* shop by category  */

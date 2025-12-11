@@ -237,13 +237,22 @@ p , span{
 .nav{
     width: 100%;
     padding: 5px 10px;
-    background-color: transparent;
+    background-color: var(--black);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     
 } 
+.nav__main{
+     width: 100%;
+    padding: 5px 10px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .fixed-header-wrapper {
     position: fixed;
     top: 0;
@@ -273,10 +282,11 @@ p , span{
         transition: opacity 0.3s ease;
 }
  */
-.nav .nav__tools svg{
+.nav .nav__tools svg , .nav__main svg{
     width: 25px;
 }
-.nav__tools{
+
+.nav .nav__tools , .nav__main .nav__tools{
     display: flex;
     gap: 10px;
     position: absolute;
@@ -418,17 +428,17 @@ p , span{
     display: none;
 }
 
-.nav .nav__logo-box {
+.nav .nav__logo-box , .nav__main .nav__logo-box{
     display: flex;
     align-items: center;
     
 }
-.nav .nav__logo-box h2{
+.nav .nav__logo-box h2 , .nav__main .nav__logo-box h2{
     font-family: var(--font-main);
     font-size: var(--fs-hero-title);
     color: white;
 }
-.nav .nav__logo-box svg {
+.nav .nav__logo-box svg , .nav__main .nav__logo-box svg{
   width: 150px;    /* change to fit your nav */
   height: auto;
   display: block;  /* avoid inline-gap issues */
@@ -1874,7 +1884,7 @@ footer .footer__company .about__us{
 
 /* scrollbar style (optional) */
 .shop__container::-webkit-scrollbar { height: 8px; transition: 1s ease; }
-.shop__container::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 8px; }
+.shop__container::-webkit-scrollbar-thumb { background-color: rgb(170, 169, 169); border-radius: 8px; }
 
 /* Card (desktop default) */
 .shop__prod__container {
