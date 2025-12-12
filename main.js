@@ -190,55 +190,6 @@ sectionPause.addEventListener('click' , PauseVideo)
 sectionPlay.addEventListener('click' , PlayVideo)
 
 
-/* sSCROLL */
-
-
-/* const slider = document.querySelector('.--latest__card__scroll');
-
-let isDown = false;
-let startX;
-let scrollLeft;
-let velocity = 0;
-let momentumID;
-
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('active'); // optional styling while dragging
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-
-  // stop any existing momentum
-  cancelAnimationFrame(momentumID);
-});
-
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-});
-
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  // apply momentum
-  momentum();
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX); // distance moved
-  velocity = walk;           // save for momentum
-  slider.scrollLeft = scrollLeft - walk;
-});
-
-// Momentum function
-function momentum(){
-  velocity *= 0.95; // friction
-  slider.scrollLeft -= velocity;
-  if(Math.abs(velocity) > 0.5){
-    momentumID = requestAnimationFrame(momentum);
-  }
-}
- */
 
 
 /* shop by category  */
@@ -568,3 +519,25 @@ window.addEventListener('scroll', () => {
     if (swapTimeout) clearTimeout(swapTimeout);
   });
 })();
+
+
+
+
+/* carddsss */
+
+
+let cardChevronRight = document.querySelector('.--latest__card__scroll .chevron__right')
+let cardChevronLeft = document.querySelector('.--latest__card__scroll .chevron__left')
+let swipe = (latestCardScroll.clientWidth / 2)
+console.log(swipe)
+const swipeLeft = () =>{
+    latestCardScroll.scrollLeft -= swipe
+}
+
+const swipeRight = () =>{
+    latestCardScroll.scrollLeft += swipe
+}
+
+cardChevronLeft.addEventListener('click' , swipeLeft)
+cardChevronRight.addEventListener('click' , swipeRight)
+

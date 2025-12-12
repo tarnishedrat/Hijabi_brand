@@ -65,6 +65,12 @@ body{
 
 /* scrollbarrr */
 
+.--latest__card__scroll {
+
+    scroll-behavior: smooth;
+    
+}
+
 
 
 
@@ -627,10 +633,10 @@ p , span{
 }
 
 /* Card layout */
-.latest-products .latest__cards .latest__card {
+.latest-products .latest__cards .latest__card ,  .latest-products.--best-sellers .latest__card{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   height: 100%; /* allow equal-height grid items if parent constrains */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease;
@@ -720,6 +726,7 @@ p , span{
   -webkit-line-clamp: 2;      /* show max 2 lines */
   -webkit-box-orient: vertical;
   text-transform: capitalize;
+
 }
 
 /* price styling */
@@ -1884,7 +1891,7 @@ footer .footer__company .about__us{
   will-change: transform;
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.12) transparent;
-  
+  cursor: grab;
 }
 
 
@@ -2024,7 +2031,9 @@ footer .footer__company .about__us{
 .shop__title,
 .shop__product-title {
   box-sizing: border-box;
+  
 }
+
 /* keep existing desktop behavior (absolute top/right) elsewhere */
 /* BELOW 1200px: move .shop__slider BELOW the scroller, centered */
 @media (max-width: 1199px) {
@@ -2048,18 +2057,57 @@ footer .footer__company .about__us{
 }
 
  .latest-products .latest__cards .latest__card .latest__wrapper{
-        padding: 0 10px;
-        height: 60px;
+        padding: 10px;
+        height: auto;
     }
 
 
 
 /* LANDSCAPEEEEE MOBILE */
+.--latest__card__scroll .chevron__right , .--latest__card__scroll .chevron__left{
+    display: none;
+}
+
+  .latest-products.--best-sellers .latest__card .latest__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        height: 100%;
+        z-index: 2;
+        overflow: hidden;
+        background-color: var(--white);
+        padding: 10px;
+        margin: 0;;
+    }
 
 
 
 @media (min-width: 768px){  
+    .--latest__card__scroll .chevron__right , .--latest__card__scroll .chevron__left{
+        display: block;
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        z-index: 2;
+        background-color: var(--white);
+        border-radius: 50%;
+        padding: 10px;
+    }
+    .--best-sellers{
+        position: relative;
 
+    }
+    .--latest__card__scroll .chevron__left{
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .--latest__card__scroll .chevron__right{
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      
+    }
 
     html{
         overflow-x: hidden;
@@ -2213,9 +2261,12 @@ footer .footer__company .about__us{
         overflow-y: hidden; /* hide vertical scroll */
         scroll-behavior: smooth;
         scroll-snap-type: x mandatory; /* snapping effect */
-        -webkit-overflow-scrolling: touch; /* smooth scroll on touch devices *
-
-
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: grab;
+         /* smooth scroll on touch devices *
+        
+        
         padding: 10px 20px;
         box-sizing: border-box;
 
@@ -2243,6 +2294,7 @@ footer .footer__company .about__us{
         scroll-snap-align: start; 
         overflow: hidden;
         max-height: 380px;
+
     }
     .latest-products.--best-sellers .latest__card:hover{
         cursor: pointer;
@@ -2283,6 +2335,8 @@ footer .footer__company .about__us{
         max-height: 325px;
         transition:  all 0.2s ease;
         overflow: hidden;
+        -webkit-user-drag: none; /* For Chrome, Safari, etc. */
+        user-select: none;
     }
 
     /* Wrapper inside card (title + price) */
@@ -2342,6 +2396,10 @@ footer .footer__company .about__us{
     flex-shrink: 0;
     scroll-snap-align: start;
     }
+    .--latest__card__scroll,
+.--latest__card__scroll * {
+    user-select: none; /* Prevents text selection */
+}
 
 
 
@@ -2511,11 +2569,13 @@ footer .footer__company .about__us{
 .img__wrapper{
     width: 100%;
     height: auto;
+    max-height: 100vh;
 }
 .img__wrapper img{
     object-fit: cover;
     width: 100%;
     max-height: 100vh;
+
 }
 
 
