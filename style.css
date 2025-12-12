@@ -2089,7 +2089,78 @@ footer .footer__company .about__us{
         padding: 10px;
         margin: 0;;
     }
+@media (min-width: 500px){
+      .--main-mobile{
+        display: none;
+    }
+    
+     /* IPADD */
+    .--main-ipad{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: var(--black);
+        max-height: 610px;
+        padding: 0;
+        overflow: hidden;
+        align-items: start;
+        position: relative;
+    }
+    .--main-ipad .sections__first__sec .sections__img-box{
+        cursor: pointer;
+        max-height: 100%;
+    }
 
+    .--main-ipad .sections__headline__container{
+        position: absolute;
+        display: flex;
+        width: 50%;
+        justify-content: center;
+    }
+    .--main-ipad .sections__headline__container h3{
+        font-size: var(--fs-section-title-main);
+        font-family: var(--font-main);
+        color: var(--white);
+       
+    }
+
+    .--main-ipad .sections__first__sec .sections__img-box img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .--main-ipad .sections__first__sec .sections__img-box img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .--main-ipad .sections__text-con{
+        position: absolute;
+        color: var(--white);
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+        width: 50%;
+        z-index: 2;
+        justify-content: center;
+    }
+    .--main-ipad .sections__first__sec .sections__text-con h3{
+        font-size: var(--fs-product-title);
+    }
+    .--main-ipad .sections__first__sec .sections__text-con span{
+        font-size: var(--fs-small);
+        font-weight: 400;
+        color: var(--white);
+    }
+
+    
+    
+    
+}
 
 
 @media (min-width: 768px){ 
@@ -2164,76 +2235,25 @@ footer .footer__company .about__us{
     .headline__container{
         width: 50%;
     }
-    .--main-mobile{
-        display: none;
-    }
+   
+
+
+
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
     .menu{
         width: 300px;
     }
 
-    /* IPADD */
-    .--main-ipad{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        background-color: var(--black);
-        max-height: 610px;
-        padding: 0;
-        overflow: hidden;
-        align-items: start;
-        position: relative;
-    }
-    .--main-ipad .sections__first__sec .sections__img-box{
-        cursor: pointer;
-        max-height: 100%;
-    }
-
-    .--main-ipad .sections__headline__container{
-        position: absolute;
-        display: flex;
-        width: 50%;
-        justify-content: center;
-    }
-    .--main-ipad .sections__headline__container h3{
-        font-size: var(--fs-section-title-main);
-        font-family: var(--font-main);
-        color: var(--white);
-       
-    }
-
-    .--main-ipad .sections__first__sec .sections__img-box img{
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .--main-ipad .sections__first__sec .sections__img-box img{
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
-    .--main-ipad .sections__text-con{
-        position: absolute;
-        color: var(--white);
-        bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        flex-direction: column;
-        width: 50%;
-        z-index: 2;
-        justify-content: center;
-    }
-    .--main-ipad .sections__first__sec .sections__text-con h3{
-        font-size: var(--fs-product-title);
-    }
-    .--main-ipad .sections__first__sec .sections__text-con span{
-        font-size: var(--fs-small);
-        font-weight: 400;
-        color: var(--white);
-    }
-
+   
 
     .latest-products .latest__cards{
         display: flex;
