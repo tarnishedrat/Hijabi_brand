@@ -229,9 +229,7 @@ const scrollPerCard = scrollableWidth / productCardsLength;
 const latestCardScroll = document.querySelector('.--latest__card__scroll')
 /*  */
 
-window.addEventListener('scroll' , () =>{
-    console.log(window.scrollY)
-})
+
 let hasScrolledShop = false;
 let hasScrolledBestSellers = false;
 
@@ -529,9 +527,8 @@ window.addEventListener('scroll', () => {
 /* carddsss */
 
 
-let cardChevronRight = document.querySelector('.--latest__card__scroll .chevron__right')
-let cardChevronLeft = document.querySelector('.--latest__card__scroll .chevron__left')
-let swipe = latestCardScroll.clientWidth
+/* 
+
 console.log(swipe)
 const swipeLeft = () =>{
     latestCardScroll.scrollLeft -= swipe
@@ -543,4 +540,205 @@ const swipeRight = () =>{
 
 cardChevronLeft.addEventListener('click' , swipeLeft)
 cardChevronRight.addEventListener('click' , swipeRight)
+
+ */
+
+
+
+
+
+
+(() => {
+    let cardChevronRight = document.querySelector('.--latest__card__scroll .chevron__right')
+    let cardChevronLeft = document.querySelector('.--latest__card__scroll .chevron__left')
+    const shopContainer = document.querySelector(".--latest__card__scroll");
+    let swipe = latestCardScroll.clientWidth + latestCardScroll.scrollWidth
+    
+    if (!cardChevronRight || !cardChevronLeft || !shopContainer) return;
+
+    // Your original working handlers
+    cardChevronRight.addEventListener("click", () => {
+        latestCardScroll.scrollLeft += swipe
+    });
+
+    cardChevronLeft.addEventListener("click", () => {
+        latestCardScroll.scrollLeft -= swipe
+    });
+
+})();
+
+
+
+
+/* FIX 100VW WIOTH 100%
+
+*/
+
+
+
+(function fixVW() {
+  for (const sheet of document.styleSheets) {
+    let rules;
+    try {
+      rules = sheet.cssRules;
+    } catch (e) {
+      // Skip cross-origin or protected stylesheets
+      continue;
+    }
+
+    for (const rule of rules) {
+      if (rule.style) {
+        for (const prop of rule.style) {
+          const value = rule.style.getPropertyValue(prop);
+          if (value.includes("100vw")) {
+            rule.style.setProperty(prop, value.replace("100vw", "100%"));
+            console.log(`Replaced in:`, rule.selectorText, prop, "→", rule.style.getPropertyValue(prop));
+          }
+        }
+      }
+    }
+  }
+})();
+
+
+
+
+
+
+
+/* SCROLL REVEALLLLLLLLL */
+
+
+
+
+(function initUI() {
+  // --------------------------
+  // 1) Scroll reveal (safe)
+  // --------------------------
+  const revealEls = document.querySelectorAll('.scroll-reveal');
+  if (revealEls && revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target); // reveal once
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  // --------------------------
+  // 2) Shop slider / chevrons (safe)
+  //    - runs only when elements exist
+  // --------------------------
+  (function shopSliderInit() {
+    const section = document.querySelector('.latest-products.--best-sellers');
+    if (!section) return; // nothing to init on this page
+
+    const shopContainer = section.querySelector('.--latest__card__scroll');
+    const productCards = section.querySelectorAll('.latest__card');
+    const sliderSpan = section.querySelector('.latest__slider span') || section.querySelector('.latest__slider .counter') || section.querySelector('.shop__slider span') || section.querySelector('.shop__slider'); // tolerant
+    // safe arrow selectors - adapt if your classes differ
+    const chevronLeft = section.querySelector('.fa-chevron-left');
+    const chevronRight = section.querySelector('.fa-chevron-right');
+
+    // require the main pieces
+    if (!shopContainer || !productCards || productCards.length === 0) return;
+
+    // --- counter accurate mapping (uses maxScroll) ---
+    const cardCount = productCards.length;
+    let maxScroll = Math.max(0, shopContainer.scrollWidth - shopContainer.clientWidth);
+    let perStep = cardCount > 1 ? maxScroll / (cardCount - 1) : maxScroll;
+    const TOLERANCE = 6;
+    let currentIndex = 0;
+
+    function recalc() {
+      maxScroll = Math.max(0, shopContainer.scrollWidth - shopContainer.clientWidth);
+      perStep = cardCount > 1 ? maxScroll / (cardCount - 1) : maxScroll;
+    }
+    recalc();
+
+    function computeIndexFromScroll() {
+      const s = shopContainer.scrollLeft;
+      if (s + TOLERANCE >= maxScroll) return cardCount - 1;
+      if (s <= TOLERANCE) return 0;
+      const ratio = maxScroll === 0 ? 0 : s / maxScroll;
+      return Math.min(Math.max(0, Math.round(ratio * (cardCount - 1))), cardCount - 1);
+    }
+
+    function updateCounter(idx) {
+      if (!sliderSpan) return;
+      // sliderSpan might be a span or other element; just set textContent
+      sliderSpan.textContent = `${idx + 1}/${cardCount}`;
+    }
+
+    function targetLeftForIndex(idx) {
+      return idx === cardCount - 1 ? maxScroll : Math.round(perStep * idx);
+    }
+
+    // init
+    currentIndex = computeIndexFromScroll();
+    updateCounter(currentIndex);
+
+    // on scroll -> update counter (rAF)
+    let raf = null;
+    shopContainer.addEventListener('scroll', () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        currentIndex = computeIndexFromScroll();
+        updateCounter(currentIndex);
+        raf = null;
+      });
+    }, { passive: true });
+
+    // arrow click handlers (if arrows exist)
+    if (chevronRight) {
+      chevronRight.addEventListener('click', () => {
+        currentIndex = Math.min(cardCount - 1, currentIndex + 1);
+        shopContainer.scrollTo({ left: targetLeftForIndex(currentIndex), behavior: 'smooth' });
+        updateCounter(currentIndex);
+      });
+    }
+    if (chevronLeft) {
+      chevronLeft.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1);
+        shopContainer.scrollTo({ left: targetLeftForIndex(currentIndex), behavior: 'smooth' });
+        updateCounter(currentIndex);
+      });
+    }
+
+    // recalc on resize (debounced)
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const prev = currentIndex;
+        recalc();
+        currentIndex = computeIndexFromScroll();
+        updateCounter(currentIndex);
+        // keep visual position on same index
+        shopContainer.scrollLeft = targetLeftForIndex(prev);
+      }, 120);
+    });
+
+    // optional: observe container changes
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => {
+        recalc();
+        currentIndex = computeIndexFromScroll();
+        updateCounter(currentIndex);
+      });
+      ro.observe(shopContainer);
+    }
+  })(); // end shopSliderInit
+
+  // --------------------------
+  // 3) OPTIONAL: other page-specific inits can go here,
+  //    always guard with `if (element) { ... }`
+  // --------------------------
+
+})(); // end initUI IIFE
+
 
