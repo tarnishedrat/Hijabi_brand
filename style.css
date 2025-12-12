@@ -310,7 +310,7 @@ p , span{
     top: var(--fixed-header-height-phone);
     left: 0;
 
-    width: 300px;            /* side menu width */
+    width: 100vw;            /* side menu width */
     height: 100vh;
 
     background: rgba(0, 0, 0, 0.92); /* luxurious black glass */
@@ -2167,6 +2167,9 @@ footer .footer__company .about__us{
     .--main-mobile{
         display: none;
     }
+    .menu{
+        width: 300px;
+    }
 
     /* IPADD */
     .--main-ipad{
@@ -2180,7 +2183,7 @@ footer .footer__company .about__us{
         position: relative;
     }
     .--main-ipad .sections__first__sec .sections__img-box{
-        
+        cursor: pointer;
         max-height: 100%;
     }
 
@@ -3082,6 +3085,16 @@ body::-webkit-scrollbar-track {
         flex-wrap: nowrap; /* don’t wrap */
     }
 
+/* NEW INNOVATION  */
+
+
+.new-innovation:not(  h2 , p , button){
+    transform: scale(0.9);
+    gap: 50px;
+}
+ .new-innovation .new__text-container p{
+    font-size: var(--fs-body);
+}
 
 
 

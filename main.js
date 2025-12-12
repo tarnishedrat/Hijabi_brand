@@ -531,7 +531,7 @@ window.addEventListener('scroll', () => {
 
 let cardChevronRight = document.querySelector('.--latest__card__scroll .chevron__right')
 let cardChevronLeft = document.querySelector('.--latest__card__scroll .chevron__left')
-let swipe = (latestCardScroll.clientWidth / 2)
+let swipe = latestCardScroll.clientWidth
 console.log(swipe)
 const swipeLeft = () =>{
     latestCardScroll.scrollLeft -= swipe
