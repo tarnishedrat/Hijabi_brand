@@ -168,26 +168,29 @@ nextBtn.addEventListener("click", () => {
 
 
 const sectionMain = document.querySelector('.sections__video-box')
-const sectionVideo = document.querySelector('.sections__video-box video')
-const sectionPause = document.querySelector('.sections__video-box .pausebtn')
-const sectionPlay = document.querySelector('.sections__video-box .playbtn')
+const sectionVideo = document.querySelectorAll('.sections__video-box .sections__video')
 
-console.log(sectionVideo)
+const sectionPause = document.querySelectorAll('.sections__video-box .pausebtn')
+const sectionPlay = document.querySelectorAll('.sections__video-box .playbtn')
+
+console.log(sectionVideo , sectionPause , sectionPlay)
 const PauseVideo = () =>{
-    sectionVideo.pause()
-    sectionPause.style.display ='none'    
-    sectionPlay.style.display ='block'    
+    sectionVideo.forEach(vid => vid.pause())
+    sectionPause.forEach(p => p.style.display ='none' )
+    sectionPlay.forEach(p => p.style.display ='block' )
+ 
 
 }
 const PlayVideo = () =>{
-    sectionVideo.play()
-    sectionPlay.style.display ='none'
-    sectionPause.style.display ='block'
+    sectionVideo.forEach(vid => vid.play())
+    sectionPlay.forEach(p => p.style.display ='none' )
+    sectionPause.forEach(p => p.style.display ='block' )
 }
 
 
-sectionPause.addEventListener('click' , PauseVideo)
-sectionPlay.addEventListener('click' , PlayVideo)
+sectionPause.forEach(p =>p.addEventListener('click' , PauseVideo))
+sectionPlay.forEach(p =>p.addEventListener('click' , PlayVideo))
+
 
 
 
