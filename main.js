@@ -63,9 +63,9 @@ let categoryImgs = document.querySelectorAll('.shop-category img')
 
 
 
-categoryImgs.forEach(img => {
-    img.src ='images/product_pictures/prodimg3.webp'
-})
+
+    
+
 
 /* nav */
 
