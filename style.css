@@ -1144,7 +1144,7 @@ footer .footer__company .about__us{
     padding: 12px 15px; /* Controls the height of the box */
     border: none;
     background: transparent; /* KEY: Transparent background */
-    color: var(--black);
+    color: white;
     outline: none;
     font-size: var(--fs-body);
 }
@@ -2194,14 +2194,16 @@ footer .footer__company .about__us{
         width: 50%;
         z-index: 2;
         justify-content: center;
+        text-align: center;
     }
     .--main-ipad .sections__first__sec .sections__text-con h3{
         font-size: var(--fs-product-title);
     }
     .--main-ipad .sections__first__sec .sections__text-con span{
         font-size: var(--fs-small);
-        font-weight: 400;
+   
         color: var(--white);
+        max-width: 90%;
     }
 
     
@@ -2522,7 +2524,7 @@ footer .footer__company .about__us{
     /*contact section*/
 
     .contact-section .contact-form-design{
-        max-width: 80vw;
+        max-width: 60vw;
         gap: 40px;
 
     }
@@ -3034,6 +3036,7 @@ footer .footer__company .about__us{
         flex-direction: column;
         width: 100%;
         z-index: 2;
+        text-align: center;
     }
     .sections__first__sec .sections__text-con h3{
         font-size: var(--fs-product-title);
@@ -3042,6 +3045,7 @@ footer .footer__company .about__us{
         font-size: var(--fs-small);
         font-weight: 400;
         color: var(--white);
+        max-width: 90%;
     }
     .sections__first__sec .sections__headline , .sections__video-box .sections__headline{
         color: var(--white);
