@@ -38,6 +38,23 @@
 
   --fixed-promo-height : 38.4px
 }
+/* === GLOBAL HORIZONTAL CONTAINMENT === */
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Prevent accidental width inflation */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.--latest__card__scroll,
+.shop__container {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+
 body{
     min-height: 100vh;
     background: var(--secondary);
@@ -2074,18 +2091,24 @@ footer .footer__company .about__us{
 
 /* SCROLL REVEAAAAAAAAAAAAL */
 
-
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    /* 🔑 THIS IS THE FIX */
+    contain: paint;
+    max-width: 100%;
 }
+
+
+
 
 .scroll-reveal.show {
   opacity: 1;
   transform: translateY(0);
 }
-
+ 
 
 
 
