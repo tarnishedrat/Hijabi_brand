@@ -2218,7 +2218,7 @@ footer .footer__company .about__us{
     }
 
 
-    .--latest__card__scroll .chevron__right , .--latest__card__scroll .chevron__left{
+    .latest-products .chevron__right , .latest-products .chevron__left{
         display: block;
         position: absolute;
         width: 35px;
@@ -2231,8 +2231,8 @@ footer .footer__company .about__us{
         opacity: 0.7;
         
     }
-    .--latest__card__scroll .chevron__right:hover
-     ,.--latest__card__scroll .chevron__left:hover{
+    .latest-products .chevron__right:hover
+     ,.latest-products .chevron__left:hover{
         opacity: 1;
         width: 37px;
         height: 37px;
@@ -2241,12 +2241,12 @@ footer .footer__company .about__us{
         position: relative;
 
     }
-    .--latest__card__scroll .chevron__left{
+    .latest-products .chevron__left{
         left: 20px;
         top: 50%;
         transform: translateY(-50%);
     }
-    .--latest__card__scroll .chevron__right{
+    .latest-products .chevron__right{
         right: 20px;
         top: 50%;
         transform: translateY(-50%);

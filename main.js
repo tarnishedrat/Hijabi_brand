@@ -549,8 +549,8 @@ cardChevronRight.addEventListener('click' , swipeRight)
 
 
 (() => {
-    let cardChevronRight = document.querySelector('.--latest__card__scroll .chevron__right')
-    let cardChevronLeft = document.querySelector('.--latest__card__scroll .chevron__left')
+    let cardChevronRight = document.querySelector('.latest-products .chevron__right')
+    let cardChevronLeft = document.querySelector('.latest-products .chevron__left')
     const shopContainer = document.querySelector(".--latest__card__scroll");
     let swipe = latestCardScroll.clientWidth + latestCardScroll.scrollWidth
     
