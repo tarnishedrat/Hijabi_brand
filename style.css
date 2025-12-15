@@ -29,7 +29,7 @@
   --fs-product-title: 1rem;    /* Product name */
   --fs-product-price: 0.95rem; /* Prices */
   --fs-body: 0.95rem;          /* Normal text */
-  --fs-small: 0.8rem;          /* Copyright, labels, etc. */
+  --fs-small: 0.9rem;          /* Copyright, labels, etc. */
   --fixed-header-height-phone: 80.5px;
   --fixed-header-height : 78.5px;
   --prod-title: rgb(55, 52, 52);
@@ -904,6 +904,7 @@ p , span{
 .fifth-line p{
     max-width: 90%;
     font-size: var(--fs-small);
+    color: var(--gray-text);
 }
 
 
@@ -2116,7 +2117,7 @@ footer .footer__company .about__us{
 
 
 /* LANDSCAPEEEEE MOBILE */
-.--latest__card__scroll .chevron__right , .--latest__card__scroll .chevron__left{
+.latest-products .chevron__right , .latest-products .chevron__left{
     display: none;
 }
 
@@ -2141,7 +2142,7 @@ footer .footer__company .about__us{
         display: grid;
         grid-template-columns: 1fr 1fr;
         background-color: var(--black);
-        max-height: 610px;
+  
         padding: 0;
         overflow: hidden;
         align-items: start;
@@ -2150,6 +2151,7 @@ footer .footer__company .about__us{
     .--main-ipad .sections__first__sec .sections__img-box{
         cursor: pointer;
         max-height: 100%;
+
     }
 
     .--main-ipad .sections__headline__container{
@@ -2157,9 +2159,12 @@ footer .footer__company .about__us{
         display: flex;
         width: 50%;
         justify-content: center;
+        top: 0;
+        z-index: 2;
+   
     }
     .--main-ipad .sections__headline__container h3{
-        font-size: var(--fs-section-title-main);
+        
         font-family: var(--font-main);
         color: var(--white);
        
@@ -2216,6 +2221,16 @@ footer .footer__company .about__us{
     height: 80px;
     
     }
+
+    .--main-ipad{
+        overflow: hidden    ;
+
+        position: relative;
+    }
+    .--main-ipad .sections__first__sec{
+        max-height: 100%;
+    }
+
 
 
     .latest-products .chevron__right , .latest-products .chevron__left{
@@ -2541,7 +2556,9 @@ footer .footer__company .about__us{
 
     .sections__main{
         width: 100%;
-        margin-left: calc(50% - 50vw);
+        overflow: hidden;
+        max-height: 610px;
+        position: relative;
         padding: 0;
     }
     .sections__main video{
@@ -2965,7 +2982,7 @@ footer .footer__company .about__us{
         max-width: 60%;
         line-height: 1.3rem;
         color: var(--gray-text);
-        color: var();
+        font-size: var(--fs-small);
         font-weight: 400;
         padding-bottom: 20px;
     }

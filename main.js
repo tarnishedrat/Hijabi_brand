@@ -92,7 +92,7 @@ const promoMessages = [
     "Shipping is 7DT for all of Tunisia",
     "Black Friday Sale — Up to 40% Off",
     "New Arrivals Just Dropped",
-    "Free Returns on All Orders",
+    "Built with attention to detail and enduring materials.",
     "Premium Quality. Luxury Fabrics."
 ];
 
