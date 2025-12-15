@@ -552,6 +552,7 @@ p , span{
     font-family: var(--font-main);
     padding: 10px;
     color: var(--white);
+    letter-spacing: 2px;
 }
 .headline__container p{
     font-size: var(--fs-small);
@@ -1165,6 +1166,7 @@ footer .footer__company .about__us{
     align-items: center;
     justify-content: center;
     transition: color 0.2s;
+    box-shadow: none;
 }
 
 /* --- ICON COLOR & WEIGHT FIXES --- */
@@ -1263,7 +1265,7 @@ footer .footer__company .about__us{
 .story-image-wrapper {
     width: 100%;
     overflow: hidden; 
-    height: calc(50vh - var(--fixed-header-height));
+    height: calc(70vh - var(--fixed-header-height));
     margin-top: -1px; 
 }
 
@@ -1271,6 +1273,9 @@ footer .footer__company .about__us{
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
+    object-position: bottom;
+    transform: translateY(-200px);
 }
 
 
@@ -1291,23 +1296,28 @@ footer .footer__company .about__us{
     font-family: var(--font-main, 'Cormorant', serif); 
     font-weight: 400; /* Regular weight for elegance */
     color: var(--black, #000000);
-    text-align: right; 
-    
+    text-align: left; 
+    margin-bottom: 20px;
     /* Ensure Arabic text renders correctly */
     direction: rtl; 
     unicode-bidi: embed;
 }
-.story-content-wrapper h2{
-    font-size: 2.6rem; 
+.story-content-wrapper p{
+    font-size: 1rem; 
     font-family: var(--font-main, 'Cormorant', serif);
     font-weight: 400;
     color: var(--black, #000000);
     margin-bottom: 25px;
     text-align: left; 
-    line-height: 0.8;
+    line-height: 1.8;
     /* Ensure Arabic text renders correctly */
     direction: rtl; 
     unicode-bidi: embed;
+ 
+    font-family: var(--font-body, 'Lato', sans-serif); 
+    line-height: 1.8; 
+    margin-bottom: 20px;
+    color: var(--black, #000000);
 }
 
 .story-content-wrapper h1 span[lang="en"] {
@@ -1322,13 +1332,6 @@ footer .footer__company .about__us{
 
 /* --- Body Text Styling --- */
 
-.story-content-wrapper p {
-    font-size: var(--fs-body, 1rem);
-    font-family: var(--font-body, 'Lato', sans-serif); 
-    line-height: 1.8; 
-    margin-bottom: 20px;
-    color: var(--black, #000000);
-}
 
 .story-content-wrapper p b {
     font-weight: 700; /* Ensures your bold text stands out */
@@ -1372,14 +1375,15 @@ footer .footer__company .about__us{
 .fabrics-image-wrapper {
     width: 100%;
     overflow: hidden; 
-    height: 250px;
+    max-height: 350px;
 }
 
 .fabrics-banner-img {
     width: 100%;
     height: auto;
     display: block; 
-    object-fit: contain;
+    object-fit: cover;
+    object-position: bottom bottom;
 }
 
 .fabrics-content-wrapper {
@@ -1437,6 +1441,7 @@ footer .footer__company .about__us{
 
 .fabric-features li {
     font-size: var(--fs-body);
+    font-weight: 400;
     margin-bottom: 5px;
     line-height: 1.6;
     /* Custom simple dot bullet point */
@@ -1784,6 +1789,7 @@ footer .footer__company .about__us{
     flex-direction: column;
     gap: 20px;
     justify-content: center;
+    text-align: center;
     align-items: center;
 }
 .latest .latest__headline h1{
@@ -1841,18 +1847,23 @@ footer .footer__company .about__us{
 .whyweloveit{
     padding: 20px;
     display: flex;
-    flex-direction: column;
+
     gap: 30px;
+    background-color: var(--white);
+}
+.whyweloveit .text-wrapper{
+    min-width:  50%;
 }
 .whyweloveit .reason{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    margin: 20px;
 }
 .whyweloveit h2{
     font-size: var(--fs-hero-title);
     font-family: var(--font-main);
-    margin: 20px 0;
+    margin: 20px;
 }
 .whyweloveit .reason p{
     line-height: 1.5rem;
@@ -2299,7 +2310,11 @@ footer .footer__company .about__us{
 
 
     
-   
+   .latest__img{
+    max-height: 300px;
+    object-fit: cover;
+    
+   }
     
     
     
@@ -2330,7 +2345,7 @@ footer .footer__company .about__us{
         gap: 10px;
         padding-left: 0;
         padding-right: 0;
-        
+      
         
 
         max-width: 250px;
@@ -2599,22 +2614,32 @@ footer .footer__company .about__us{
 /* --- GLOBAL MAIN CONTAINER --- */
 .--main {
     /* Centralize content and add more desktop padding/margin */
-    padding: 20px 20px;
+
+}
+.--classic-forthline{
+    background-color: var(--cream);
+}
+.--classic-category{
+    background-color: var(--white);
+    margin-left: 0;
+    margin-right: 0 !important;
+
+    min-width: 100%;
 }
 
 /* --- 1. OUR FABRICS SECTION (Image & Cropping Fixes) --- */
 
 /* Main Banner Image: Manage height and scaling */
-.fabrics-banner-img {
-    /* Ensure the image takes the full width of the constrained container (800px max) */
-    width: 100%; 
-    /* Set a reasonable maximum height for the desktop view */
-    max-height: 400px; 
-    /* FIX: Ensures the image scales nicely and covers the container without being stretched/distorted */
-    object-fit: cover; 
-    display: block;
-    margin-bottom: 40px;
-    object-position: center center;
+    .fabrics-banner-img {
+        /* Ensure the image takes the full width of the constrained container (800px max) */
+        width: 100%; 
+        /* Set a reasonable maximum height for the desktop view */ 
+        /* FIX: Ensures the image scales nicely and covers the container without being stretched/distorted */
+        object-fit: cover; 
+        display: block;
+       object-position: bottom bottom;
+       transform: translateY(-200px);
+        
 }
 
 /* Fabric Detail Section Images (woven, jersey, modal) */
@@ -2713,17 +2738,22 @@ footer .footer__company .about__us{
         justify-content: center;
         gap: 40px;
         padding: 20px;
+  
     }
     .shop-all .landscape__text .text__con{
-        max-width: 50%;
+        max-width: 90%;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        align-items: center;
     }
     .shop-all .landscape__text .text__con h1{
         font-family: var(--font-main);
         font-size: var(--fs-section-title-main);
     }
+     .shop-all .landscape__text .text__con p{
+            text-align: center;
+     }
     .shop-all .shop__all__img-box{
         padding: 20px;
         
