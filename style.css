@@ -32,6 +32,7 @@
   --fs-small: 0.9rem;          /* Copyright, labels, etc. */
   --fixed-header-height-phone: 80.5px;
   --fixed-header-height : 78.5px;
+  --fixed-header-height-1200 : 81.5px;
   --prod-title: rgb(55, 52, 52);
 
 
@@ -308,7 +309,10 @@ p , span{
  */
 .nav .nav__tools svg , .nav__main svg{
     width: 25px;
+    
 }
+
+
 
 .nav .nav__tools , .nav__main .nav__tools{
     display: flex;
@@ -316,7 +320,48 @@ p , span{
     position: absolute;
     right: 10px;
 }
+.search__bar {
+    position: absolute;
 
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(600px, 60%);
+    padding: 8px 16px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 999px;
+
+    font-size: 14px;
+    letter-spacing: 0.4px;
+
+    background-color: #fff;
+    color: #111;
+
+    outline: none;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+.search__bar::placeholder {
+    color: #777;
+    letter-spacing: 0.3px;
+}
+.search__bar:focus {
+    border-color: #000;
+}
+.nav.search-open .search__bar{
+    opacity: 1;
+    pointer-events: auto;
+}
+.nav__main.search-open .search__bar{
+    opacity: 1;
+    pointer-events: auto;
+}
 
 /* menuuu */
 
@@ -553,6 +598,7 @@ p , span{
     padding: 10px;
     color: var(--white);
     letter-spacing: 2px;
+    text-align: center;
 }
 .headline__container p{
     font-size: var(--fs-small);
@@ -560,6 +606,7 @@ p , span{
     padding: 10px 0px;
     text-align: center;
     color: var(--white);
+    max-width: 503px;
 }
 .button__container{
     padding: 10px 5px;
@@ -1243,7 +1290,12 @@ footer .footer__company .about__us{
     background-color: var(--primary);
     margin-bottom: 120px;
 }
+/* MENU  */
 
+
+.nav .menu{
+    top: var(--fixed-header-height);
+}
 
 
 /* --- OUR STORY SECTION STYLING --- */
@@ -1257,25 +1309,42 @@ footer .footer__company .about__us{
     display: flex;
     flex-direction: column;
     align-items: center; 
+    
  
 }
 
 /* --- Image Styling --- */
 
 .story-image-wrapper {
-    width: 100%;
+
     overflow: hidden; 
-    height: calc(70vh - var(--fixed-header-height));
+    position: relative;
+    top: var(--fixed-header-height);
     margin-top: -1px; 
+    justify-self: center;
+ 
+    background-color: black;
 }
 
+@media (min-width:950px){
+    .story-image-wrapper {
+
+    overflow: hidden; 
+    position: relative;
+    top: var(--fixed-header-height);
+    margin-top: -1px; 
+    justify-self: center;
+    height: calc(100vh - var(--fixed-header-height));
+    background-color: black;
+}
+}
 .story-banner-img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
     object-position: bottom;
-    transform: translateY(-200px);
+
 }
 
 
@@ -1284,7 +1353,7 @@ footer .footer__company .about__us{
 .story-content-wrapper {
     max-width: 700px; /* Slightly wider content box for readability */
     width: 100%;
-    margin: 50px auto; 
+    margin: 70px auto; 
     padding: 20px; /* Space between the banner image and the text */
     color: var(--black, #000000);
 }
@@ -1796,8 +1865,9 @@ footer .footer__company .about__us{
     font-size: var(--fs-section-title-main);
     font-family: var(--font-main);
 }
+
 .latest .latest__headline .text__con {
-    max-width: 50%;
+ 
      display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1844,13 +1914,6 @@ footer .footer__company .about__us{
 /* why we love it  */
 
 
-.whyweloveit{
-    padding: 20px;
-    display: flex;
-
-    gap: 30px;
-    background-color: var(--white);
-}
 .whyweloveit .text-wrapper{
     min-width:  50%;
 }
@@ -2026,6 +2089,9 @@ footer .footer__company .about__us{
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.shop__slider i{
+    cursor: pointer;
 }
 .shop__nav {
   background: rgba(0,0,0,0.06);
@@ -2224,6 +2290,18 @@ footer .footer__company .about__us{
 
 
 @media (min-width: 768px){ 
+
+    /* why we love it  */
+
+    
+
+.whyweloveit{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: var(--white);
+}
     
     .latest-products .latest__cards .latest__card .latest__wrapper  , .latest-products.--best-sellers .latest__card .latest__wrapper{
     display: flex;
@@ -2780,7 +2858,7 @@ footer .footer__company .about__us{
 
     .nav .menu{
         top: var(--fixed-header-height);
-        min-width: fit-content;
+        min-width: 300px;
         max-width: 30%;
         height: 100vh;
     }
@@ -2917,7 +2995,9 @@ footer .footer__company .about__us{
         height: 80px;
     }
 
-
+.nav .menu{
+    top: var(--fixed-header-height-1200);
+}
 
     
     .fixed-header-wrapper{
@@ -2947,7 +3027,7 @@ footer .footer__company .about__us{
     color: white;
 }
 .nav .nav__logo-box svg {
-  width: 180px;    /* change to fit your nav */
+  width: 150px;    /* change to fit your nav */
   height: auto;
   display: block;  /* avoid inline-gap issues */
   vertical-align: middle;
